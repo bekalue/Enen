@@ -5,6 +5,33 @@ from django.urls import reverse
 from .models import Doctor, Patient, Prescription, passwordHasher, emailHasher
 from django.db.models import Count, Q
 
+def responseHeadersModifier(response):
+    """Funtion to edit response headers so that no cached versions can be viewed. Returns the modified response."""
+    response["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    response["Pragma"] = "no-cache"
+    response["Expires"] = "0"
+    return response
+
+def requestSessionInitializedChecker(request):
+    """Function to initialize request sessions if they don't exist."""
+
+    # Try except for KeyError
+    try:
+        # Checking if session variables exist
+        if request.session['isDoctor'] and request.session['isLoggedIn'] and request.session['userEmail'] and request.session['Name'] and request.session['numberNewPrescriptions']:
+            # Do nothing if they do exist
+            pass
+    except:
+        # Initialize request variables if they don't exist
+        request.session['isDoctor'] = ""
+        request.session['isLoggedIn'] = False
+        request.session['userEmail'] = ""
+        request.session['Name'] = ""
+        request.session['numberNewPrescriptions'] = ""
+
+    # Returning request
+    return request
+
 def index(request):
     """ Function for displaying main page of website. """
     # Editing response headers so as to ignore cached versions of pages
@@ -285,4 +312,146 @@ def login(request):
     # For any other method of access, returning a new blank login page
     else:
         response = render(request,"core/login.html")
+        return responseHeadersModifier(response)
+
+def logout(request):
+    """Function to log out the user."""
+    # Erasing all the information of the session variables if user is logged out
+    request.session['isDoctor'] = ""
+    request.session['isLoggedIn'] = False
+    request.session['userEmail'] = ""
+    request.session['Name'] = ""
+    request.session['numberNewPrescriptions'] = ""
+
+    # Redirecting to avoid form resubmission
+    # Redirecting to home page
+    # Editing response headers so as to ignore cached versions of pages
+    response = HttpResponseRedirect(reverse('login'))
+    return responseHeadersModifier(response)
+
+def contact(request):
+    """Function to display contact information."""
+
+    # Editing response headers so as to ignore cached versions of pages
+    response = render(request, "core/contact.html")
+    return responseHeadersModifier(response)
+
+def onlineprescription(request):
+    """Function to submit online prescription request to doctor."""
+
+    # Calling session variables checker
+    request = requestSessionInitializedChecker(request)
+
+    # If the request method is get
+    if request.method == "GET":
+
+        # If the user is logged in
+        if request.session['isLoggedIn']:
+
+            # Portal only for patient prescription request submission, not for doctors
+            if request.session['isDoctor']:
+
+                # Storing message inside context variable
+                context = {
+                        "message":"Only for patients."
+                }
+
+                # Editing response headers so as to ignore cached versions of pages
+                response = render(request, "core/prescription.html", context)
+                return responseHeadersModifier(response)
+
+            # If the user is a patient
+            else:
+
+                # Storing available doctors inside context variable
+                context = {
+                    "doctors" : Doctor.objects.all().order_by('specialization')
+                }
+
+                # Editing response headers so as to ignore cached versions of pages
+                response = render(request, "core/prescription.html", context)
+                return responseHeadersModifier(response)
+
+        # If the user is not logged in
+        else:
+
+            # Storing message inside context variable
+            context = {
+                    "message":"Please Login First."
+            }
+
+            # Editing response headers so as to ignore cached versions of pages
+            response = render(request, "core/prescription.html", context)
+            return responseHeadersModifier(response)
+
+    # If the user is posting the prescription request
+    elif request.method == "POST":
+
+        # Accepting only if the user is logged in
+        if request.session['isLoggedIn']:
+
+            # If the prescription is being submitted back by a doctor
+            if request.session['isDoctor']:
+
+                # Extracting information from post request
+                prescriptionText = request.POST['prescription']
+
+                # Updating the prescription and saving it
+                prescription = Prescription.objects.get(pk = request.POST['prescriptionID'])
+                prescription.prescriptionText = prescriptionText
+                prescription.isCompleted = True
+                prescription.isNew = True
+                prescription.save()
+
+                # Getting the records of the doctor
+                records = Doctor.objects.get(emailHash = request.session['userEmail']).doctorRecords.all()
+
+                # Storing required information inside context variable
+                context = {
+                    "user" : records,
+                    "successPrescriptionMessage" : "Prescription Successfully Submitted."
+                }
+
+                # Editing response headers so as to ignore cached versions of pages
+                response = render(request, "core/userDoctorProfilePortal.html", context)
+                return responseHeadersModifier(response)
+
+            # Else if the patient is submitting prescription request
+            else:
+
+                # Extracting information from post request and getting the corresponding doctor
+                doctor = Doctor.objects.get(pk = request.POST["doctor"])
+                symptoms = request.POST["symptoms"]
+
+                # Saving the prescription under the concerned doctor
+                prescription = Prescription(doctor = doctor, patient = Patient.objects.get(emailHash = request.session['userEmail']), symptoms = symptoms)
+                prescription.save()
+
+                # Storing information inside context variable
+                context = {
+                    "successPrescriptionMessage" : "Prescription Successfully Requested.",
+                    "doctors"  : Doctor.objects.all().order_by('specialization')
+                }
+
+                # Editing response headers so as to ignore cached versions of pages
+                response = render(request, "core/prescription.html", context)
+                return responseHeadersModifier(response)
+
+        # Else if the user is not logged in
+        else:
+
+            # Storing information inside context variable
+            context = {
+                    "successPrescriptionMessage":"Please Login First.",
+            }
+
+            # Editing response headers so as to ignore cached versions of pages
+            response = render(request, "core/login.html", context)
+            return responseHeadersModifier(response)
+
+    # For any other method of access, returning a new blank online prescription page
+    else:
+
+        # Editing response headers so as to ignore cached versions of pages
+        response = render(request, "core/prescription.html")
         return responseHeadersModifier(response)
