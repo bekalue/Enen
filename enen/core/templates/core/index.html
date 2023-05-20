@@ -1,0 +1,91 @@
+{% extends "core/base.html" %}
+
+
+{% block title %}
+Enen
+{% endblock %}
+
+
+{% block style %}
+<style>
+.carousel-item{
+height: 500px;
+}
+.carousel-item img{
+height: 500px;
+}
+</style>
+{% endblock %}
+
+
+{% block bodytag %}
+
+{% load static %}
+
+<body style="background-size: auto auto;">
+
+{% endblock %}
+
+
+{% block body %}
+
+
+    {% if request.session.isLoggedIn %}
+    {% else %}
+    <div style="display: flex;">
+        <div class="jumbotron" style="flex: 1; margin: 0 auto;">
+            <h1 class="display-4" style="color: green">Get immediate Virtual care for non-life-threatening</h1>
+            <hr class="my-4">
+            <p>We help people avoid in-person doctor's or clinic visits for minor health and questions that can easily addressed via a chat or Phone calls.</p>
+            <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Get Started</a>
+        </div>
+        <img src="{% static 'core/images/health.jpg' %}" style="flex: 1;">
+    </div>
+    {% endif %}
+
+    <div>
+        <hr class="my-4">
+        <h1 class="display-3" style="text-align:center;color:black">BENEFITS</h1>
+        <li class="dropdown-divider" style="margin-left:25%;margin-right:25%;border-color:black"></li>
+
+        <div class="row" style="margin: 0 auto;">
+
+            <div class="col-sm-6" style="margin-top:2%">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h5 class="card-title">Online Prescription</h5>
+                        <li class="dropdown-divider" style="margin-right:15%"></li>
+                        <p class="card-text">Get online hassle-free prescription from doctor.</p>
+                        <a href="{% url 'onlineprescription' %}" class="btn btn-primary">ONLINE PRESCRIPTION</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6" style="margin-top:2%">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h5 class="card-title">Chat With Doctors</h5>
+                        <li class="dropdown-divider" style="margin-right:15%"></li>
+                        <p class="card-text">24 x 7 Help Line Availability.</p>
+                        <a href="{% url 'contact' %}" class="btn btn-primary">CHAT</a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="Footer">
+        <h6 style="text-align:center;color:black;background-color:#dddddd;margin: 0 auto;">
+            <hr class="my-4" style="margin: 0 auto;">
+            ©2023 All Rights Reserved, Enen Virtual Health
+            <br>
+            <br>
+        </h6>
+        <div>
+
+{% endblock %}
