@@ -21,7 +21,7 @@ class Patient(models.Model):
     address = models.CharField(max_length = 100)
     contactNumber = models.CharField(max_length = 10)
     email = models.EmailField(unique = True, max_length = 255)
-    rollNumber = models.CharField(unique = True, max_length = 8)
+    userId = models.CharField(unique = True, max_length = 8)
     passwordHash = models.CharField(max_length = 64)
     emailHash = models.CharField(max_length = 64)
 

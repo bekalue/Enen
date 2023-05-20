@@ -54,7 +54,7 @@ def register(request):
         userFirstName = request.POST["userFirstName"]
         userLastName = request.POST["userLastName"]
         userEmail = request.POST["userEmail"]
-        userRollNo = request.POST["userRollNo"]
+        userId = request.POST["userId"]
         userAddress = request.POST["userAddress"]
         userContactNo = request.POST["userContactNo"]
         userPassword = request.POST["userPassword"]
@@ -72,7 +72,7 @@ def register(request):
             emailHash = emailHasher(userEmail)
 
             # Creating a patient object and saving inside the database
-            patient = Patient(name = name,rollNumber = userRollNo, email = userEmail, passwordHash = passwordHash, address = userAddress, contactNumber = userContactNo, emailHash = emailHash )
+            patient = Patient(name = name,userId = userId, email = userEmail, passwordHash = passwordHash, address = userAddress, contactNumber = userContactNo, emailHash = emailHash )
             patient.save()
 
             # Storing success message in the context variable

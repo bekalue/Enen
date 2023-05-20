@@ -95,12 +95,12 @@ class PatientsTestCase(TestCase):
         email = "12345@gmail.com"
         passwordHash = passwordHasher("abcdefgh")
         emailHash = emailHasher(email)
-        p1 = Patient.objects.create(name = "Abcd Efgh", address = "Aaaa, Bbbbb, 110011", contactNumber = "8888888888", rollNumber = "B17CS101", email = email, passwordHash = passwordHash, emailHash = emailHash)
+        p1 = Patient.objects.create(name = "Abcd Efgh", address = "Aaaa, Bbbbb, 110011", contactNumber = "8888888888", userId = "B17CS101", email = email, passwordHash = passwordHash, emailHash = emailHash)
 
         email = "67890@gmail.com"
         passwordHash = passwordHasher("ijklmnop")
         emailHash = emailHasher(email)
-        p2 = Patient.objects.create(name = "Ijkl Mnop", address = "Cccc, Dddd, 001100", contactNumber = "9999999999", rollNumber = "B17CS102", email = email, passwordHash = passwordHash, emailHash = emailHash)
+        p2 = Patient.objects.create(name = "Ijkl Mnop", address = "Cccc, Dddd, 001100", contactNumber = "9999999999", userId = "B17CS102", email = email, passwordHash = passwordHash, emailHash = emailHash)
 
     def testPatientCount(self):
         """Function to check the correct number of patients stored in database."""
@@ -119,13 +119,13 @@ class PatientsTestCase(TestCase):
         p1 = patients[0]
         emailHash = emailHasher(p1.email)
         passwordHash = passwordHasher("abcdefgh")
-        self.assertTrue(p1.name == "Abcd Efgh" and p1.address == "Aaaa, Bbbbb, 110011" and p1.contactNumber == "8888888888" and p1.rollNumber == "B17CS101" and p1.email == "12345@gmail.com" and p1.passwordHash == passwordHash and p1.emailHash == emailHash)
+        self.assertTrue(p1.name == "Abcd Efgh" and p1.address == "Aaaa, Bbbbb, 110011" and p1.contactNumber == "8888888888" and p1.userId == "B17CS101" and p1.email == "12345@gmail.com" and p1.passwordHash == passwordHash and p1.emailHash == emailHash)
 
         # Confirming the details of the second patient inserted as in setUp() method
         p2 = patients[1]
         emailHash = emailHasher(p2.email)
         passwordHash = passwordHasher("ijklmnop")
-        self.assertTrue(p2.name == "Ijkl Mnop" and p2.address == "Cccc, Dddd, 001100" and p2.contactNumber == "9999999999" and p2.rollNumber == "B17CS102" and p2.email == "67890@gmail.com" and p2.passwordHash == passwordHash and p2.emailHash == emailHash)
+        self.assertTrue(p2.name == "Ijkl Mnop" and p2.address == "Cccc, Dddd, 001100" and p2.contactNumber == "9999999999" and p2.userId == "B17CS102" and p2.email == "67890@gmail.com" and p2.passwordHash == passwordHash and p2.emailHash == emailHash)
 
     def testDuplicatePasswordHashes(self):
         """Function to confirm that different passwords give different hashes. Otherwise hashing technique would be weak"""
@@ -190,12 +190,12 @@ class PrescriptionsTestCase(TestCase):
         email = "12345@gmail.com"
         passwordHash = passwordHasher("abcdefgh")
         emailHash = emailHasher(email)
-        p1 = Patient.objects.create(name = "Abcd Efgh", address = "Aaaa, Bbbbb, 110011", contactNumber = "8888888888", rollNumber = "B17CS101", email = email, passwordHash = passwordHash, emailHash = emailHash)
+        p1 = Patient.objects.create(name = "Abcd Efgh", address = "Aaaa, Bbbbb, 110011", contactNumber = "8888888888", userId = "B17CS101", email = email, passwordHash = passwordHash, emailHash = emailHash)
 
         email = "67890@gmail.com"
         passwordHash = passwordHasher("ijklmnop")
         emailHash = emailHasher(email)
-        p2 = Patient.objects.create(name = "Ijkl Mnop", address = "Cccc, Dddd, 001100", contactNumber = "9999999999", rollNumber = "B17CS102", email = email, passwordHash = passwordHash, emailHash = emailHash)
+        p2 = Patient.objects.create(name = "Ijkl Mnop", address = "Cccc, Dddd, 001100", contactNumber = "9999999999", userId = "B17CS102", email = email, passwordHash = passwordHash, emailHash = emailHash)
 
         # Setting up test prescription instances and storing in test database
         symptoms = "aaaaa bbbbb"
@@ -273,12 +273,12 @@ class ClientsInteractionTestCase(TestCase):
         email = "12345@gmail.com"
         passwordHash = passwordHasher("abcdefgh")
         emailHash = emailHasher(email)
-        p1 = Patient.objects.create(name = "Abcd Efgh", address = "Aaaa, Bbbbb, 110011", contactNumber = "8888888888", rollNumber = "B17CS101", email = email, passwordHash = passwordHash, emailHash = emailHash)
+        p1 = Patient.objects.create(name = "Abcd Efgh", address = "Aaaa, Bbbbb, 110011", contactNumber = "8888888888", userId = "B17CS101", email = email, passwordHash = passwordHash, emailHash = emailHash)
 
         email = "67890@gmail.com"
         passwordHash = passwordHasher("ijklmnop")
         emailHash = emailHasher(email)
-        p2 = Patient.objects.create(name = "Ijkl Mnop", address = "Cccc, Dddd, 001100", contactNumber = "9999999999", rollNumber = "B17CS102", email = email, passwordHash = passwordHash, emailHash = emailHash)
+        p2 = Patient.objects.create(name = "Ijkl Mnop", address = "Cccc, Dddd, 001100", contactNumber = "9999999999", userId = "B17CS102", email = email, passwordHash = passwordHash, emailHash = emailHash)
 
         # Initializing the prescriptions required during testing and saving into database
         symptoms = "aaaaa bbbbb"
@@ -342,7 +342,7 @@ class ClientsInteractionTestCase(TestCase):
         client = Client()
 
         # Requesting by POST method for page with correct input(matching passwords)
-        response = client.post("/register", {"userFirstName" : "AA", "userLastName" : "BB", "userEmail" : "abcd@gmail.com", "userRollNo" : "B99CS099", "userAddress" : "CC, DD", "userContactNo" : "9999999999", "userPassword" : "12345", "userConfirmPassword" : "12345"})
+        response = client.post("/register", {"userFirstName" : "AA", "userLastName" : "BB", "userEmail" : "abcd@gmail.com", "userId" : "B99CS099", "userAddress" : "CC, DD", "userContactNo" : "9999999999", "userPassword" : "12345", "userConfirmPassword" : "12345"})
         # Asserting correct status code, response headers and templates
         self.assertEqual(response.status_code, 200)
         self.assertTrue(checkResponseHeaders(response))
@@ -351,7 +351,7 @@ class ClientsInteractionTestCase(TestCase):
         self.assertIn("Registration Successful", response.context["message"])
 
         # Requesting by POST method for page with incorrect input(passwords not matching)
-        response = client.post("/register", {"userFirstName" : "AA", "userLastName" : "BB", "userEmail" : "abcd@gmail.com", "userRollNo" : "B99CS099", "userAddress" : "CC, DD", "userContactNo" : "9999999999", "userPassword" : "12345", "userConfirmPassword" : "123456"})
+        response = client.post("/register", {"userFirstName" : "AA", "userLastName" : "BB", "userEmail" : "abcd@gmail.com", "userId" : "B99CS099", "userAddress" : "CC, DD", "userContactNo" : "9999999999", "userPassword" : "12345", "userConfirmPassword" : "123456"})
         # Asserting correct status code, response headers and templates
         self.assertEqual(response.status_code, 200)
         self.assertTrue(checkResponseHeaders(response))

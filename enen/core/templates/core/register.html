@@ -1,0 +1,121 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+Enen
+{% endblock%}
+
+{% block script %}
+{% load static %}
+<script src="{% static 'core/javascript/checkboxConfirm.js' %}"></script>
+{% endblock %}
+
+{% block bodytag %}
+
+{% load static %}
+
+<body style="background-size: auto auto;">
+
+{% endblock %}
+
+
+{% block body %}
+
+
+    <div class="jumbotron jumbotron-fluid"
+        style="margin:5%;padding:5%;background:rgba(0,0,0,0.8);padding-top:2%;padding-bottom:2%" align="center"
+        width="300px">
+        <h1 style="text-align:left;color:white" class="display-5">
+            Register Here.
+        </h1>
+        <li class="dropdown-divider" style="border-color:white"></li>
+        {% if request.session.isLoggedIn %}
+        <br>
+        <br>
+        <div style="text-align:center;margin:0 auto;" class="alert alert-warning" role="alert">
+            You are already a user!
+        </div>
+        <br>
+        <br>
+        {% else %}
+        <br>
+        <form onsubmit="return checkConfirm()" align="center" action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <div class="form-row ">
+
+                <div class="col-6 ">
+                    <input name="userFirstName" type="text" class="form-control" placeholder="First name">
+                </div>
+                <div class="col-6">
+                    <input name="userLastName" type="text" class="form-control" placeholder="Last name">
+                </div>
+
+            </div>
+
+            <br>
+
+            <div class="form-row">
+
+                <div class="col-6">
+                    <input name="userEmail" type="email" class="form-control" placeholder="Email Address">
+                </div>
+
+                <div class="col-6">
+                    <input name="userId" type="text" class="form-control" placeholder="Public Id">
+                </div>
+
+            </div>
+
+            <br>
+
+            <div class="form-row">
+
+                <div class="col-6">
+                    <input name="userAddress" type="text" class="form-control" placeholder="Address">
+                </div>
+
+                <div class="col-6">
+                    <input name="userContactNo" type="number" class="form-control" placeholder="Contact Number">
+                </div>
+
+            </div>
+
+            <br>
+
+            <div class="form-row">
+
+                <div class="col-6">
+                    <input name="userPassword" type="password" class="form-control" placeholder="Password">
+                </div>
+
+                <div class="col-6">
+                    <input name="userConfirmPassword" type="password" class="form-control"
+                        placeholder="Confirm Password">
+                </div>
+
+            </div>
+
+            <br>
+
+            <li class="dropdown-divider" style="margin-left:25%;margin-right:25%"></li>
+
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="confirmCheck">
+                <label class="form-check-label" for="exampleCheck1"><span
+                        class="badge badge-success">CONFIRM</span></label>
+            </div>
+
+            <button type="submit" class="btn btn-warning">Submit</button>
+        </form>
+    </div>
+
+    {% endif %}
+
+    <br>
+
+    {% if message %}
+    <div style="text-align:center;margin:0 auto;" class="alert alert-warning" role="alert">
+        {{ message }}
+    </div>
+    {% endif %}
+
+    {% endblock %}
