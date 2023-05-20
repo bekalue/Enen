@@ -1,0 +1,107 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>{% block title %}{% endblock %}</title>
+    {% block style %}{% endblock %}
+
+    <script src="{% static 'core/javascript/windowHistory.js' %}"></script>
+
+    {% block script %}
+    {% endblock %}
+</head>
+
+{% block bodytag %}
+{% endblock %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+    {% if request.session.isLoggedIn %}
+    <a class="navbar-brand" href="/">
+        <h3 style="color:black;text-align:center">Hi,{% if request.session.isDoctor %} Dr.{% endif %} {{
+            request.session.Name }}</h3>
+    </a>
+    {% else %}
+    <a class="navbar-brand" href="/">
+        <h2 style="color:black;text-align:center">Enen</h2>
+    </a>
+    {% endif %}
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'index' %}" style="color:black">Home <span
+                        class="sr-only">(current)</span></a>
+            </li>
+
+            {% if request.session.isLoggedIn %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}" style="color:black">Your Prescriptions <span
+                        class="badge badge-primary badge-pill">{{ request.session.numberNewPrescriptions }}
+                        NEW</span></a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}" style="color:black">Login</a>
+            </li>
+            {% endif %}
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" style="color:black" href="#" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Options
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'doctors' %}">Doctors</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'contact' %}">Chat with Doctors</a>
+
+                    {% if request.session.isLoggedIn %}
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                    {% endif %}
+
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'onlineprescription' %}" style="color:black">Online Prescription</a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+<li class="dropdown-divider" style="margin-top:0px;margin-bottom:0px;border-color:black"></li>
+
+{% block body %}
+
+{% endblock %}
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
