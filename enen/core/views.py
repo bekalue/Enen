@@ -340,7 +340,7 @@ def contact(request):
     response = render(request, "core/contact.html")
     return responseHeadersModifier(response)
 
-def onlineprescription(request):
+def onlinehelp(request):
     """Function to submit online prescription request to doctor."""
 
     # Calling session variables checker
@@ -361,7 +361,7 @@ def onlineprescription(request):
                 }
 
                 # Editing response headers so as to ignore cached versions of pages
-                response = render(request, "core/prescription.html", context)
+                response = render(request, "core/help.html", context)
                 return responseHeadersModifier(response)
 
             # If the user is a patient
@@ -373,7 +373,7 @@ def onlineprescription(request):
                 }
 
                 # Editing response headers so as to ignore cached versions of pages
-                response = render(request, "core/prescription.html", context)
+                response = render(request, "core/help.html", context)
                 return responseHeadersModifier(response)
 
         # If the user is not logged in
@@ -385,7 +385,7 @@ def onlineprescription(request):
             }
 
             # Editing response headers so as to ignore cached versions of pages
-            response = render(request, "core/prescription.html", context)
+            response = render(request, "core/help.html", context)
             return responseHeadersModifier(response)
 
     # If the user is posting the prescription request
@@ -438,7 +438,7 @@ def onlineprescription(request):
                 }
 
                 # Editing response headers so as to ignore cached versions of pages
-                response = render(request, "core/prescription.html", context)
+                response = render(request, "core/help.html", context)
                 return responseHeadersModifier(response)
 
         # Else if the user is not logged in
@@ -457,5 +457,5 @@ def onlineprescription(request):
     else:
 
         # Editing response headers so as to ignore cached versions of pages
-        response = render(request, "core/prescription.html")
+        response = render(request, "core/help.html")
         return responseHeadersModifier(response)
