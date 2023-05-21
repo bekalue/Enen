@@ -469,3 +469,26 @@ def onlinehelp(request):
         # Editing response headers so as to ignore cached versions of pages
         response = render(request, "core/help.html")
         return responseHeadersModifier(response)
+
+
+def requests(request):
+
+    doctor = Doctor.objects.get(emailHash = request.session['userEmail'])
+    records = doctor.doctorRecords.all()
+
+    # Getting the count of the new Assistances pending
+    numberNewPendingAssistances = doctor.doctorRecords.aggregate(newPendingAssistances = Count('pk', filter =( Q(isNew = True) & Q(isCompleted = False) ) ))['newPendingAssistances']
+
+    # Storing the same inside the session variables
+    request.session['numberNewAssistances'] = numberNewPendingAssistances
+
+    # Storing the required information inside the context variable
+    context = {
+        "message" : "Successfully Logged In.",
+        "isAuthenticated" : True,
+        "user": records.order_by('-timestamp')
+    }
+
+    # Editing response headers so as to ignore cached versions of pages
+    response = render(request,"core/userDoctorProfilePortal.html", context)
+    return responseHeadersModifier(response)
