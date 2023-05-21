@@ -10,9 +10,9 @@ Enen
 
 <body style="background-size: auto auto;">
 
-{% endblock %}
+    {% endblock %}
 
-{% block body %}
+    {% block body %}
 
     <br>
 
@@ -24,7 +24,7 @@ Enen
 
     <br>
     <br>
-
+    {% if request.session.isLoggedIn %}
     {% for doctor in doctors %}
     <div class="row container" style="margin: 0 auto;">
         <div class="col-sm-12">
@@ -35,7 +35,7 @@ Enen
                     <li class="dropdown-divider"></li>
                     <p class="card-text">
                     <pre
-                        style="color:white">Address        : {{ doctor.address }}<br>Email          : {{ doctor.email }}<br>Specialization : {{ doctor.specialization }}</pre>
+                        style="color:white">Address : {{ doctor.address }}<br>Email : {{ doctor.email }}<br>Specialization : {{ doctor.specialization }}</pre>
                     </p>
                     <a href="#" class="btn btn-primary">Contact Number : {{ doctor.contactNumber }}</a>
                 </div>
@@ -44,7 +44,7 @@ Enen
     </div>
 
     <br>
-
+    <br>
     {% empty %}
 
     <h1 style="text-align:center;color:white">
@@ -52,5 +52,12 @@ Enen
     </h1>
 
     {% endfor %}
+    {% else %}
+    {% if message %}
+    <div style="text-align:center;margin:0 auto;" class="alert alert-warning" role="alert">
+        {{ message }}
+    </div>
+    {% endif %}
+    {% endif %}
 
     {% endblock %}

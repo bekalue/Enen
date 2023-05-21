@@ -109,10 +109,18 @@ def doctors(request):
     context = {
         "doctors" : Doctor.objects.all()
     }
+    if request.session['isLoggedIn']:
+        # Editing response headers so as to ignore cached versions of pages
+        response = render(request,"core/doctors.html",context)
+        return responseHeadersModifier(response)
+    else:
+        con = {
+                    "message":"Please Login First."
+            }
 
-    # Editing response headers so as to ignore cached versions of pages
-    response = render(request,"core/doctors.html",context)
-    return responseHeadersModifier(response)
+        # Editing response headers so as to ignore cached versions of pages
+        response = render(request, "core/doctors.html", con)
+        return responseHeadersModifier(response)
 
 def login(request):
     """ Function for logging in the user. """
