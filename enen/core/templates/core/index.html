@@ -45,42 +45,96 @@ height: 500px;
 
     <div>
         {% if request.session.isLoggedIn %}
-        <h1 class="display-3" style="text-align:center;color:black">SERVICES</h1>
-        {% else %}
-        <hr class="my-4">
-        <h1 class="display-3" style="text-align:center;color:black">BENEFITS</h1>
-        {% endif %}
+        {% if request.session.isDoctor %}
+        <h1 class="display-3" style="text-align:center;color:black">Welcome Doc.</h1>
         <li class="dropdown-divider" style="margin-left:25%;margin-right:25%;border-color:black"></li>
-
+        
         <div class="row" style="margin: 0 auto;">
-
+        
             <div class="col-sm-6" style="margin-top:2%">
                 <div class="card">
                     <div class="card-body">
-
+        
+                        <h5 class="card-title">Your Requests</h5>
+                        <li class="dropdown-divider" style="margin-right:15%"></li>
+                        <p class="card-text">Answer Requests.</p>
+                        <a href="{% url 'onlinehelp' %}" class="btn btn-primary">Here</a>
+        
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        {% else %}
+        <h1 class="display-3" style="text-align:center;color:black">SERVICES</h1>
+        <li class="dropdown-divider" style="margin-left:25%;margin-right:25%;border-color:black"></li>
+        
+        <div class="row" style="margin: 0 auto;">
+        
+            <div class="col-sm-6" style="margin-top:2%">
+                <div class="card">
+                    <div class="card-body">
+        
                         <h5 class="card-title">Online Help</h5>
                         <li class="dropdown-divider" style="margin-right:15%"></li>
                         <p class="card-text">Get online hassle-free help from doctor.</p>
                         <a href="{% url 'onlinehelp' %}" class="btn btn-primary">REQUEST HELP</a>
-
+        
                     </div>
                 </div>
             </div>
-
+        
             <div class="col-sm-6" style="margin-top:2%">
                 <div class="card">
                     <div class="card-body">
-
+        
                         <h5 class="card-title">Call Doctors</h5>
                         <li class="dropdown-divider" style="margin-right:15%"></li>
                         <p class="card-text">24 x 7 Help Line Availability.</p>
                         <a href="{% url 'contact' %}" class="btn btn-primary">CALL</a>
-
+        
                     </div>
                 </div>
             </div>
-
+        
         </div>
+        {% endif %}
+        {% else %}
+        <hr class="my-4">
+        <h1 class="display-3" style="text-align:center;color:black">BENEFITS</h1>
+        <li class="dropdown-divider" style="margin-left:25%;margin-right:25%;border-color:black"></li>
+        
+        <div class="row" style="margin: 0 auto;">
+        
+            <div class="col-sm-6" style="margin-top:2%">
+                <div class="card">
+                    <div class="card-body">
+        
+                        <h5 class="card-title">Online Help</h5>
+                        <li class="dropdown-divider" style="margin-right:15%"></li>
+                        <p class="card-text">Get online hassle-free help from doctor.</p>
+                        <a href="{% url 'onlinehelp' %}" class="btn btn-primary">REQUEST HELP</a>
+        
+                    </div>
+                </div>
+            </div>
+        
+            <div class="col-sm-6" style="margin-top:2%">
+                <div class="card">
+                    <div class="card-body">
+        
+                        <h5 class="card-title">Call Doctors</h5>
+                        <li class="dropdown-divider" style="margin-right:15%"></li>
+                        <p class="card-text">24 x 7 Help Line Availability.</p>
+                        <a href="{% url 'contact' %}" class="btn btn-primary">CALL</a>
+        
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        {% endif %}
+        
     </div>
 
     {% if request.session.isLoggedIn %}
