@@ -309,7 +309,7 @@ class ClientsInteractionTestCase(TestCase):
         # Asserting correct status code, response headers and templates
         self.assertEqual(response.status_code, 200)
         self.assertTrue(checkResponseHeaders(response))
-        self.assertTemplateUsed(response, 'core/contact.html', 'core/base.html')
+        self.assertTemplateUsed(response, 'core/doctors.html', 'core/base.html')
 
     def testValidDoctorsPage(self):
         """Function for testing the doctors page."""

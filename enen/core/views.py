@@ -337,8 +337,18 @@ def contact(request):
     """Function to display contact information."""
 
     # Editing response headers so as to ignore cached versions of pages
-    response = render(request, "core/contact.html")
-    return responseHeadersModifier(response)
+    context = {
+        "doctors" : Doctor.objects.all(),
+        "message":"Please Login First."
+    }
+    if request.session.get('isLoggedIn', False):
+        # Editing response headers so as to ignore cached versions of pages
+        response = render(request,"core/doctors.html",context)
+        return responseHeadersModifier(response)
+    else:
+        # Editing response headers so as to ignore cached versions of pages
+        response = render(request, "core/doctors.html", context)
+        return responseHeadersModifier(response)
 
 def onlinehelp(request):
     """Function to submit online prescription request to doctor."""
