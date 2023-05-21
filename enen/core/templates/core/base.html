@@ -47,6 +47,22 @@
                         class="sr-only">(current)</span></a>
             </li>
 
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" style="color:black" href="#" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Options
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{% url 'doctors' %}">Doctors</a>
+            
+                    {% if request.session.isLoggedIn %}
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                    {% endif %}
+            
+                </div>
+            </li>
+
             {% if request.session.isLoggedIn %}
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'login' %}" style="color:black">Your Requests <span
@@ -59,21 +75,7 @@
             </li>
             {% endif %}
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" style="color:black" href="#" id="navbarDropdown" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Options
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'doctors' %}">Doctors</a>
-                    
-                    {% if request.session.isLoggedIn %}
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
-                    {% endif %}
-
-                </div>
-            </li>
+            
 
         </ul>
     </div>
