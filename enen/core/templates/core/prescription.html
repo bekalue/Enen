@@ -1,0 +1,94 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}
+Enen
+{% endblock%}
+
+{% block script %}
+<script src="{% static 'core/javascript/checkboxConfirm.js' %}"></script>
+{% endblock %}
+
+{% block bodytag %}
+
+{% load static %}
+
+<body style="background-size: auto auto;">
+
+{% endblock %}
+
+
+{% block body %}
+
+    <br>
+
+    <h1 style="text-align:center;color:black" class="display-4">
+        Request Prescription.
+    </h1>
+
+    <li class="dropdown-divider" style="margin-left:25%;margin-right:25%;border-color:black"></li>
+
+    {% if successPrescriptionMessage %}
+    <br>
+    <div style="text-align:center;margin:0 auto;" class="alert alert-warning" role="alert">
+        {{ successPrescriptionMessage }}
+    </div>
+    {% endif %}
+
+    {% if request.session.isLoggedIn %}
+    {% if not request.session.isDoctor %}
+
+    <br>
+    <br>
+
+    <div class="container center_div" style="background:rgba(0,0,0,0.6);padding-top:2%;padding-bottom:2%" align="center"
+        width="300px">
+
+        <form onsubmit="return checkConfirm()" align="center" action="{% url 'onlineprescription' %}" method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+
+                <label style="color:white">Please select a doctor from the dropdown.</label>
+                <select name="doctor" class="form-control" placeholder="Select Doctor">
+                    {% for doctor in doctors %}
+                    <option value="{{ doctor.id }}">Dr. {{ doctor.name }} || {{ doctor.specialization }} Specialist
+                    </option>
+                    {% endfor %}
+                </select>
+
+            </div>
+
+            <br>
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1" style="color:white">Please type the symptoms.</label>
+                <textarea name="symptoms" class="form-control" rows="5" placeholder="Symptoms"></textarea>
+            </div>
+
+            <br>
+
+            <li class="dropdown-divider" style="margin-left:25%;margin-right:25%"></li>
+
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="confirmCheck">
+                <label class="form-check-label"><span class="badge badge-success">CONFIRM</span></label>
+            </div>
+
+            <button type="submit" class="btn btn-warning">Request Prescription</button>
+
+        </form>
+
+    </div>
+
+    {% endif %}
+    {% endif %}
+
+    <br>
+
+    {% if message %}
+    <div style="text-align:center;margin:0 auto;" class="alert alert-warning" role="alert">
+        {{ message }}
+    </div>
+    {% endif %}
+
+    {% endblock %}

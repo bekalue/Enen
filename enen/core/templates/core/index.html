@@ -45,10 +45,11 @@ height: 500px;
 
     <div>
         {% if request.session.isLoggedIn %}
+        <h1 class="display-3" style="text-align:center;color:black">SERVICES</h1>
         {% else %}
         <hr class="my-4">
-        {% endif %}
         <h1 class="display-3" style="text-align:center;color:black">BENEFITS</h1>
+        {% endif %}
         <li class="dropdown-divider" style="margin-left:25%;margin-right:25%;border-color:black"></li>
 
         <div class="row" style="margin: 0 auto;">
@@ -82,6 +83,16 @@ height: 500px;
         </div>
     </div>
 
+    {% if request.session.isLoggedIn %}
+    <div id="Footer" style="bottom: 0; position: fixed; width: 100%">
+        <h6 style="text-align:center;color:black;background-color:#dddddd;margin: 0 auto;">
+            <hr class="my-4" style="margin: 0 auto;">
+            ©2023 All Rights Reserved, Enen Virtual Health
+            <br>
+            <br>
+        </h6>
+    <div>
+    {% else %}
     <div id="Footer" style="bottom: 0">
         <h6 style="text-align:center;color:black;background-color:#dddddd;margin: 0 auto;">
             <hr class="my-4" style="margin: 0 auto;">
@@ -90,5 +101,6 @@ height: 500px;
             <br>
         </h6>
     <div>
+    {% endif %}
 
 {% endblock %}
