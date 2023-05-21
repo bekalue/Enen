@@ -25,8 +25,8 @@ Enen
     <br>
     <br>
 
-    {% for prescription in user %}
-    {% if prescription.isCompleted %}
+    {% for Assistance in user %}
+    {% if Assistance.isCompleted %}
     <div class="card text-center" style="margin-left:5%;margin-right:5%;">
 
         <div class="card-header">
@@ -34,17 +34,17 @@ Enen
         </div>
 
         <div class="card-body">
-            <h1 class="card-title"> Dr. {{ prescription.doctor.name }} </h1>
-            <p class="card-text lead" style=""><br>{{ prescription.prescriptionText }}<br><br> <span>
+            <h1 class="card-title"> Dr. {{ Assistance.doctor.name }} </h1>
+            <p class="card-text lead" style=""><br>{{ Assistance.assistanceText }}<br><br> <span>
                     <h3>Your Symptoms</h3>
-                </span> {{ prescription.symptoms }}</p>
-            <a href="#" class="btn btn-primary" style="margin-top:1%">Contact Number : {{ prescription.doctor.contactNumber }}</a>
-            <a href="#" class="btn btn-primary" style="margin-top:1%">Email : {{ prescription.doctor.email }}</a>
-            <a href="#" class="btn btn-primary" style="margin-top:1%">Address : {{ prescription.doctor.address }}</a>
+                </span> {{ Assistance.symptoms }}</p>
+            <a href="#" class="btn btn-primary" style="margin-top:1%">Contact Number : {{ Assistance.doctor.contactNumber }}</a>
+            <a href="#" class="btn btn-primary" style="margin-top:1%">Email : {{ Assistance.doctor.email }}</a>
+            <a href="#" class="btn btn-primary" style="margin-top:1%">Address : {{ Assistance.doctor.address }}</a>
         </div>
 
         <div class="card-footer text-muted">
-            {{ prescription.timestamp }}
+            {{ Assistance.timestamp }}
         </div>
 
     </div>

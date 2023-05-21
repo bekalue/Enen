@@ -1,5 +1,5 @@
 from django.test import Client, TestCase
-from .models import Doctor, Patient, Prescription, passwordHasher, emailHasher
+from .models import Doctor, Patient, Assistance, passwordHasher, emailHasher
 
 class DoctorsTestCase(TestCase):
 
@@ -169,7 +169,7 @@ class PatientsTestCase(TestCase):
         # Asserting that the number of password hashes are still 2 if hashing technique is strong
         self.assertEqual(len(emailHashes), 2)
 
-class PrescriptionsTestCase(TestCase):
+class AssistancesTestCase(TestCase):
 
     def setUp(self):
         """Function to initialize objects and things required during testing the
@@ -197,56 +197,56 @@ class PrescriptionsTestCase(TestCase):
         emailHash = emailHasher(email)
         p2 = Patient.objects.create(name = "Ijkl Mnop", address = "Cccc, Dddd, 001100", contactNumber = "9999999999", userId = "B17CS102", email = email, passwordHash = passwordHash, emailHash = emailHash)
 
-        # Setting up test prescription instances and storing in test database
+        # Setting up test Assistance instances and storing in test database
         symptoms = "aaaaa bbbbb"
-        prescription1 = Prescription.objects.create(doctor = d1, patient = p1, symptoms = symptoms)
+        Assistance1 = Assistance.objects.create(doctor = d1, patient = p1, symptoms = symptoms)
 
         symptoms = "ccccc ddddd"
-        prescription2 = Prescription.objects.create(doctor = d2, patient = p2, symptoms = symptoms)
+        Assistance2 = Assistance.objects.create(doctor = d2, patient = p2, symptoms = symptoms)
 
-    def testPrescriptionCount(self):
-        """Function to check the correct number of prescriptions stored in database."""
+    def testAssistanceCount(self):
+        """Function to check the correct number of Assistances stored in database."""
 
-        # Getting all the prescriptions and then asserting their correct count
-        prescriptions = Prescription.objects.all()
-        self.assertEqual(prescriptions.count(), 2)
+        # Getting all the Assistances and then asserting their correct count
+        assistances = Assistance.objects.all()
+        self.assertEqual(assistances.count(), 2)
 
-    def testIncompletePrescription(self):
-        """Function to check the status of incomplete prescriptions. """
+    def testIncompleteAssistance(self):
+        """Function to check the status of incomplete Assistances. """
 
-        # Getting all the prescriptions
-        prescriptions = Prescription.objects.all()
+        # Getting all the Assistances
+        assistances = Assistance.objects.all()
 
-        # Asserting all the prescriptions (which are incomplete)
+        # Asserting all the Assistances (which are incomplete)
         # to be new and not completed
-        for prescription in prescriptions:
-            self.assertTrue(prescription.isNew)
-            self.assertFalse(prescription.isCompleted)
+        for assistance in assistances:
+            self.assertTrue(assistance.isNew)
+            self.assertFalse(assistance.isCompleted)
 
-    def testCompletePrescription(self):
-        """Function to check the status of incomplete prescriptions. """
+    def testCompleteAssistance(self):
+        """Function to check the status of incomplete Assistances. """
 
-        # Getting all the prescriptions
-        prescriptions = Prescription.objects.all()
+        # Getting all the Assistances
+        assistances = Assistance.objects.all()
 
-        # Completing all the prescriptions in the database as a doctor
+        # Completing all the Assistances in the database as a doctor
         # would, setting the isNew property false and isCompleted true,
-        # also setting their prescription text
-        for prescription in prescriptions:
-            prescription.prescriptionText = "Aaaaaa Bbbbbb Cccccc Dddddd"
-            prescription.isNew = False
-            prescription.isCompleted = True
+        # also setting their Assistance text
+        for assistance in assistances:
+            assistance.assistanceText = "Aaaaaa Bbbbbb Cccccc Dddddd"
+            assistance.isNew = False
+            assistance.isCompleted = True
 
-        # Asserting all the attributes of the completed prescriptions as required
-        prescription1 = prescriptions[0]
-        self.assertTrue(prescription1.doctor.id == Doctor.objects.get(email="abcdefgh@gmail.com").id and prescription1.patient.id == Patient.objects.get(email = "12345@gmail.com").id and prescription1.prescriptionText == "Aaaaaa Bbbbbb Cccccc Dddddd")
-        self.assertTrue(prescription1.isCompleted)
-        self.assertFalse(prescription1.isNew)
+        # Asserting all the attributes of the completed Assistances as required
+        Assistance1 = assistances[0]
+        self.assertTrue(Assistance1.doctor.id == Doctor.objects.get(email="abcdefgh@gmail.com").id and Assistance1.patient.id == Patient.objects.get(email = "12345@gmail.com").id and Assistance1.assistanceText == "Aaaaaa Bbbbbb Cccccc Dddddd")
+        self.assertTrue(Assistance1.isCompleted)
+        self.assertFalse(Assistance1.isNew)
 
-        prescription2 = prescriptions[1]
-        self.assertTrue(prescription2.doctor.id == Doctor.objects.get(email="ijklmnop@gmail.com").id and prescription2.patient.id == Patient.objects.get(email = "67890@gmail.com").id and prescription2.prescriptionText == "Aaaaaa Bbbbbb Cccccc Dddddd")
-        self.assertTrue(prescription2.isCompleted)
-        self.assertFalse(prescription2.isNew)
+        Assistance2 = assistances[1]
+        self.assertTrue(Assistance2.doctor.id == Doctor.objects.get(email="ijklmnop@gmail.com").id and Assistance2.patient.id == Patient.objects.get(email = "67890@gmail.com").id and Assistance2.assistanceText == "Aaaaaa Bbbbbb Cccccc Dddddd")
+        self.assertTrue(Assistance2.isCompleted)
+        self.assertFalse(Assistance2.isNew)
 
 def checkResponseHeaders(response):
     """Function for checking if the response headers are modified as required."""
@@ -280,12 +280,12 @@ class ClientsInteractionTestCase(TestCase):
         emailHash = emailHasher(email)
         p2 = Patient.objects.create(name = "Ijkl Mnop", address = "Cccc, Dddd, 001100", contactNumber = "9999999999", userId = "B17CS102", email = email, passwordHash = passwordHash, emailHash = emailHash)
 
-        # Initializing the prescriptions required during testing and saving into database
+        # Initializing the Assistances required during testing and saving into database
         symptoms = "aaaaa bbbbb"
-        prescription1 = Prescription.objects.create(doctor = d1, patient = p1, symptoms = symptoms)
+        Assistance1 = Assistance.objects.create(doctor = d1, patient = p1, symptoms = symptoms)
 
         symptoms = "ccccc ddddd"
-        prescription2 = Prescription.objects.create(doctor = d2, patient = p2, symptoms = symptoms)
+        Assistance2 = Assistance.objects.create(doctor = d2, patient = p2, symptoms = symptoms)
 
     def testValidIndexPage(self):
         """Function for testing the index page."""
@@ -402,7 +402,7 @@ class ClientsInteractionTestCase(TestCase):
         self.assertTrue(client.session["isDoctor"])
         self.assertEqual(client.session["userEmail"], emailHasher("abcdefgh@gmail.com"))
         self.assertEqual(client.session["Name"], "Abcd Efgh")
-        self.assertEqual(client.session["numberNewPrescriptions"], 1)
+        self.assertEqual(client.session["numberNewAssistances"], 1)
 
     def testGetDoctorLoginProfilePageWithSessionInfo(self):
         """Function for testing the login page once a doctor is already logged in previously
@@ -422,10 +422,10 @@ class ClientsInteractionTestCase(TestCase):
         self.assertTrue(client.session["isDoctor"])
         self.assertEqual(client.session["userEmail"], emailHasher("abcdefgh@gmail.com"))
         self.assertEqual(client.session["Name"], "Abcd Efgh")
-        self.assertEqual(client.session["numberNewPrescriptions"], 1)
-        # Checking the prescriptions in the doctor's history to ensure it is his account
-        for prescription in response.context["user"]:
-            self.assertEqual(prescription.doctor.email, "abcdefgh@gmail.com")
+        self.assertEqual(client.session["numberNewAssistances"], 1)
+        # Checking the Assistances in the doctor's history to ensure it is his account
+        for Assistance in response.context["user"]:
+            self.assertEqual(Assistance.doctor.email, "abcdefgh@gmail.com")
 
     def testPostPatientLoginPage(self):
         """Function for testing the login page by POST method for patients."""
@@ -449,11 +449,11 @@ class ClientsInteractionTestCase(TestCase):
         # Asserting invalid credentials in the message
         self.assertIn("Invalid Credentials.", response.context["message"])
 
-        # Completing the prescription in setUp() for checking patient history
-        prescription1 = Prescription.objects.get(patient = Patient.objects.get(email = "12345@gmail.com"))
-        prescription1.prescriptionText = "XYZ Advice..Precription Complete"
-        prescription1.isCompleted = True
-        prescription1.save()
+        # Completing the Assistance in setUp() for checking patient history
+        Assistance1 = Assistance.objects.get(patient = Patient.objects.get(email = "12345@gmail.com"))
+        Assistance1.assistanceText = "XYZ Advice..Precription Complete"
+        Assistance1.isCompleted = True
+        Assistance1.save()
 
         # Requesting by POST method for page with correct password
         response = client.post("/login", {"useremail" : "12345@gmail.com", "userpassword" : "abcdefgh"})
@@ -465,7 +465,7 @@ class ClientsInteractionTestCase(TestCase):
         self.assertFalse(client.session["isDoctor"])
         self.assertEqual(client.session["userEmail"], emailHasher("12345@gmail.com"))
         self.assertEqual(client.session["Name"], "Abcd Efgh")
-        self.assertEqual(client.session["numberNewPrescriptions"], 1)
+        self.assertEqual(client.session["numberNewAssistances"], 1)
 
     def testGetPatientLoginProfilePageWithSessionInfo(self):
         """Function for testing the login page once a patient is already logged in previously
@@ -475,11 +475,11 @@ class ClientsInteractionTestCase(TestCase):
         # Logging in once with correct credentials by the POST method for the page
         client.post("/login", {"useremail" : "12345@gmail.com", "userpassword" : "abcdefgh"})
 
-        # Completing the prescription in setUp() for checking patient history
-        prescription1 = Prescription.objects.get(patient = Patient.objects.get(email = "12345@gmail.com"))
-        prescription1.prescriptionText = "XYZ Advice..Precription Complete"
-        prescription1.isCompleted = True
-        prescription1.save()
+        # Completing the Assistance in setUp() for checking patient history
+        assistance1 = Assistance.objects.get(patient = Patient.objects.get(email = "12345@gmail.com"))
+        assistance1.assistanceText = "XYZ Advice..Precription Complete"
+        assistance1.isCompleted = True
+        assistance1.save()
 
         # Requesting by GET method for login page after being logged in once already
         response = client.get("/login")
@@ -492,10 +492,10 @@ class ClientsInteractionTestCase(TestCase):
         self.assertFalse(client.session["isDoctor"])
         self.assertEqual(client.session["userEmail"], emailHasher("12345@gmail.com"))
         self.assertEqual(client.session["Name"], "Abcd Efgh")
-        self.assertEqual(client.session["numberNewPrescriptions"], 1)
-        # Checking the prescriptions in the patient's history to ensure it is his account
-        for prescription in response.context["user"]:
-            self.assertEqual(prescription.patient.email, "12345@gmail.com")
+        self.assertEqual(client.session["numberNewAssistances"], 1)
+        # Checking the Assistances in the patient's history to ensure it is his account
+        for assistance in response.context["user"]:
+            self.assertEqual(assistance.patient.email, "12345@gmail.com")
 
     def testDoctorLogoutPage(self):
         """Function for testing the logout page for doctors."""
@@ -515,7 +515,7 @@ class ClientsInteractionTestCase(TestCase):
         self.assertFalse(client.session["isLoggedIn"])
         self.assertEqual(client.session["userEmail"], "")
         self.assertEqual(client.session["Name"], "")
-        self.assertEqual(client.session["numberNewPrescriptions"], "")
+        self.assertEqual(client.session["numberNewAssistances"], "")
 
     def testPatientLogoutPage(self):
         """Function for testing the logout page for patients."""
@@ -535,4 +535,4 @@ class ClientsInteractionTestCase(TestCase):
         self.assertFalse(client.session["isLoggedIn"])
         self.assertEqual(client.session["userEmail"], "")
         self.assertEqual(client.session["Name"], "")
-        self.assertEqual(client.session["numberNewPrescriptions"], "")
+        self.assertEqual(client.session["numberNewAssistances"], "")

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
-from .models import Doctor, Patient, Prescription, passwordHasher, emailHasher
+from .models import Doctor, Patient, Assistance, passwordHasher, emailHasher
 from django.db.models import Count, Q
 
 def responseHeadersModifier(response):
@@ -24,8 +24,8 @@ def requestSessionInitializedChecker(request):
         request.session['userEmail'] = ""
     if not request.session.get('Name'):
         request.session['Name'] = ""
-    if not request.session.get('numberNewPrescriptions'):
-        request.session['numberNewPrescriptions'] = ""
+    if not request.session.get('numberNewAssistances'):
+        request.session['numberNewAssistances'] = ""
 
     # Returning request
     return request
@@ -119,7 +119,6 @@ def doctors(request):
         return responseHeadersModifier(response)
 
 def login(request):
-    print("Login view called")
     """ Function for logging in the user. """
 
     # Calling session variables checker
@@ -131,17 +130,16 @@ def login(request):
 
             # If the user is already logged in inside of his sessions, and is a doctor, then no authentication required
             if request.session['isLoggedIn'] and request.session['isDoctor']:
-                print("User is logged in and is a doctor")
 
                 # Accessing the doctor user and all his/her records
                 doctor = Doctor.objects.get(emailHash = request.session['userEmail'])
                 records = doctor.doctorRecords.all()
 
-                # Getting the count of the new prescriptions pending
-                numberNewPendingPrescriptions = doctor.doctorRecords.aggregate(newPendingPrescriptions = Count('pk', filter =( Q(isNew = True) & Q(isCompleted = False) ) ))['newPendingPrescriptions']
+                # Getting the count of the new Assistances pending
+                numberNewPendingAssistances = doctor.doctorRecords.aggregate(newPendingAssistances = Count('pk', filter =( Q(isNew = True) & Q(isCompleted = False) ) ))['newPendingAssistances']
 
                 # Storing the same inside the session variables
-                request.session['numberNewPrescriptions'] = numberNewPendingPrescriptions
+                request.session['numberNewAssistances'] = numberNewPendingAssistances
 
                 # Storing the required information inside the context variable
                 context = {
@@ -156,17 +154,16 @@ def login(request):
 
             # If the user is already logged in inside of his sessions, and is a patient, then no authentication required
             elif request.session['isLoggedIn'] and (not request.session['isDoctor']):
-                print("User is logged in and is a patient")
 
                 # Accessing the patient user and all his/her records
                 patient = Patient.objects.get(emailHash = request.session['userEmail'])
                 records = patient.patientRecords.all()
 
-                # Getting the count of the new prescriptions pending
-                numberNewPrescriptions = patient.patientRecords.aggregate(newCompletedPrescriptions = Count('pk', filter =( Q(isNew = True) & Q(isCompleted = True) ) ) )['newCompletedPrescriptions']
+                # Getting the count of the new Assistances pending
+                numberNewAssistances = patient.patientRecords.aggregate(newCompletedAssistances = Count('pk', filter =( Q(isNew = True) & Q(isCompleted = True) ) ) )['newCompletedAssistances']
 
                 # Storing the same inside the session variables
-                request.session['numberNewPrescriptions'] = numberNewPrescriptions
+                request.session['numberNewAssistances'] = numberNewAssistances
 
                 # Updating the completed records
                 for record in records:
@@ -186,14 +183,12 @@ def login(request):
                 return responseHeadersModifier(response)
 
             else:
-                print("User is not logged in")
                 # Editing response headers so as to ignore cached versions of pages
                 response = render(request,"core/login.html")
                 return responseHeadersModifier(response)
 
         # If any error occurs, sending back a new blank page
-        except Exception as e:
-            print(f"An error occurred: {e}")
+        except:
 
             # Editing response headers so as to ignore cached versions of pages
             response = render(request,"core/login.html")
@@ -242,11 +237,11 @@ def login(request):
             # Accessing all records of doctor
             records = doctor.doctorRecords.all()
 
-            # Getting the count of new prescriptions
-            numberNewPendingPrescriptions = doctor.doctorRecords.aggregate(newPendingPrescriptions = Count('pk', filter =( Q(isNew = True) & Q(isCompleted = False) ) ))['newPendingPrescriptions']
+            # Getting the count of new Assistances
+            numberNewPendingAssistances = doctor.doctorRecords.aggregate(newPendingAssistances = Count('pk', filter =( Q(isNew = True) & Q(isCompleted = False) ) ))['newPendingAssistances']
 
             # Storing the same inside request variable
-            request.session['numberNewPrescriptions'] = numberNewPendingPrescriptions
+            request.session['numberNewAssistances'] = numberNewPendingAssistances
 
             # If the inputted hash and the original user password hash match
             if passwordHash == doctor.passwordHash:
@@ -280,11 +275,11 @@ def login(request):
             # Accessing all records of patient
             records = patient.patientRecords.all()
 
-            # Getting the count of new prescriptions
-            numberNewPrescriptions = patient.patientRecords.aggregate(newCompletedPrescriptions = Count('pk', filter =( Q(isNew = True) & Q(isCompleted = True) ) ))['newCompletedPrescriptions']
+            # Getting the count of new Assistances
+            numberNewAssistances = patient.patientRecords.aggregate(newCompletedAssistances = Count('pk', filter =( Q(isNew = True) & Q(isCompleted = True) ) ))['newCompletedAssistances']
 
             # Storing the same inside request variable
-            request.session['numberNewPrescriptions'] = numberNewPrescriptions
+            request.session['numberNewAssistances'] = numberNewAssistances
 
             # Updating the completed records
             for record in records:
@@ -330,7 +325,7 @@ def logout(request):
     request.session['isLoggedIn'] = False
     request.session['userEmail'] = ""
     request.session['Name'] = ""
-    request.session['numberNewPrescriptions'] = ""
+    request.session['numberNewAssistances'] = ""
 
     # Redirecting to avoid form resubmission
     # Redirecting to home page
@@ -356,7 +351,7 @@ def contact(request):
         return responseHeadersModifier(response)
 
 def onlinehelp(request):
-    """Function to submit online prescription request to doctor."""
+    """Function to submit online Assistance request to doctor."""
 
     # Calling session variables checker
     request = requestSessionInitializedChecker(request)
@@ -367,7 +362,7 @@ def onlinehelp(request):
         # If the user is logged in
         if request.session['isLoggedIn']:
 
-            # Portal only for patient prescription request submission, not for doctors
+            # Portal only for patient Assistance request submission, not for doctors
             if request.session['isDoctor']:
 
                 # Storing message inside context variable
@@ -403,24 +398,24 @@ def onlinehelp(request):
             response = render(request, "core/help.html", context)
             return responseHeadersModifier(response)
 
-    # If the user is posting the prescription request
+    # If the user is posting the Assistance request
     elif request.method == "POST":
 
         # Accepting only if the user is logged in
         if request.session['isLoggedIn']:
 
-            # If the prescription is being submitted back by a doctor
+            # If the Assistance is being submitted back by a doctor
             if request.session['isDoctor']:
 
                 # Extracting information from post request
-                prescriptionText = request.POST['prescription']
+                assistanceText = request.POST['Assistance']
 
-                # Updating the prescription and saving it
-                prescription = Prescription.objects.get(pk = request.POST['prescriptionID'])
-                prescription.prescriptionText = prescriptionText
-                prescription.isCompleted = True
-                prescription.isNew = True
-                prescription.save()
+                # Updating the Assistance and saving it
+                assistance = Assistance.objects.get(pk = request.POST['AssistanceID'])
+                assistance.assistanceText = assistanceText
+                assistance.isCompleted = True
+                assistance.isNew = True
+                assistance.save()
 
                 # Getting the records of the doctor
                 records = Doctor.objects.get(emailHash = request.session['userEmail']).doctorRecords.all()
@@ -428,27 +423,27 @@ def onlinehelp(request):
                 # Storing required information inside context variable
                 context = {
                     "user" : records,
-                    "successPrescriptionMessage" : "Prescription Successfully Submitted."
+                    "successAssistanceMessage" : "Assistance Successfully Submitted."
                 }
 
                 # Editing response headers so as to ignore cached versions of pages
                 response = render(request, "core/userDoctorProfilePortal.html", context)
                 return responseHeadersModifier(response)
 
-            # Else if the patient is submitting prescription request
+            # Else if the patient is submitting Assistance request
             else:
 
                 # Extracting information from post request and getting the corresponding doctor
                 doctor = Doctor.objects.get(pk = request.POST["doctor"])
                 symptoms = request.POST["symptoms"]
 
-                # Saving the prescription under the concerned doctor
-                prescription = Prescription(doctor = doctor, patient = Patient.objects.get(emailHash = request.session['userEmail']), symptoms = symptoms)
-                prescription.save()
+                # Saving the Assistance under the concerned doctor
+                assistance = Assistance(doctor = doctor, patient = Patient.objects.get(emailHash = request.session['userEmail']), symptoms = symptoms)
+                assistance.save()
 
                 # Storing information inside context variable
                 context = {
-                    "successPrescriptionMessage" : "Prescription Successfully Requested.",
+                    "successAssistanceMessage" : "Assistance Successfully Requested.",
                     "doctors"  : Doctor.objects.all().order_by('specialization')
                 }
 
@@ -461,14 +456,14 @@ def onlinehelp(request):
 
             # Storing information inside context variable
             context = {
-                    "successPrescriptionMessage":"Please Login First.",
+                    "successAssistanceMessage":"Please Login First.",
             }
 
             # Editing response headers so as to ignore cached versions of pages
             response = render(request, "core/login.html", context)
             return responseHeadersModifier(response)
 
-    # For any other method of access, returning a new blank online prescription page
+    # For any other method of access, returning a new blank online Assistance page
     else:
 
         # Editing response headers so as to ignore cached versions of pages

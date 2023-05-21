@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Doctor, Patient, Prescription
+from .models import Doctor, Patient, Assistance
 
 # Register your models here.
 
 admin.site.register(Doctor)
 admin.site.register(Patient)
-admin.site.register(Prescription)
+admin.site.register(Assistance)

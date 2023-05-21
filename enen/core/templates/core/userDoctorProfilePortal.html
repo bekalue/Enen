@@ -24,16 +24,16 @@ Enen
     <br>
     <br>
 
-    {% if successPrescriptionMessage %}
+    {% if successAssistanceMessage %}
     <div style="text-align:center;margin:0 auto;" class="alert alert-warning" role="alert">
-        {{ successPrescriptionMessage }}
+        {{ successAssistanceMessage }}
     </div>
     {% endif %}
 
     <br>
 
-    {% for prescription in user %}
-    {% if not prescription.isCompleted %}
+    {% for Assistance in user %}
+    {% if not Assistance.isCompleted %}
     <form action="{% url 'onlinehelp' %}" method="post">
         {% csrf_token %}
         <div class="card text-center" style="margin-left:5%;margin-right:5%;">
@@ -43,7 +43,7 @@ Enen
             <div class="card-body">
 
                 <h1 class="card-title">
-                    {{ prescription.patient.name }}
+                    {{ Assistance.patient.name }}
                 </h1>
 
                 <div class="card-text lead">
@@ -52,9 +52,9 @@ Enen
 
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Please type the Response.</label>
-                        <textarea name="prescription" style="text-align:center" class="form-control"
+                        <textarea name="Assistance" style="text-align:center" class="form-control"
                             id="exampleFormControlTextarea1" rows="3" placeholder="Your Response"></textarea>
-                        <input type="hidden" name="prescriptionID" value="{{ prescription.id }}">
+                        <input type="hidden" name="AssistanceID" value="{{ Assistance.id }}">
                     </div>
 
                     <br>
@@ -64,7 +64,7 @@ Enen
                         <h3>User's Symptoms</h3>
                     </span>
 
-                    {{ prescription.symptoms }}
+                    {{ Assistance.symptoms }}
 
                 </div>
 
@@ -80,14 +80,14 @@ Enen
 
                         <li class=" dropdown-divider" style="margin-left:25%;margin-right:25%"></li>
 
-                    <a href="#" class="btn btn-primary" style="margin-top:1%">Contact Number : {{ prescription.patient.contactNumber }}</a>
-                    <a href="#" class="btn btn-primary" style="margin-top:1%">Email : {{ prescription.patient.email }}</a>
-                    <a href="#" class="btn btn-primary" style="margin-top:1%">Address : {{ prescription.patient.address }}</a>
+                    <a href="#" class="btn btn-primary" style="margin-top:1%">Contact Number : {{ Assistance.patient.contactNumber }}</a>
+                    <a href="#" class="btn btn-primary" style="margin-top:1%">Email : {{ Assistance.patient.email }}</a>
+                    <a href="#" class="btn btn-primary" style="margin-top:1%">Address : {{ Assistance.patient.address }}</a>
 
             </div>
 
             <div class="card-footer text-muted">
-                {{ prescription.timestamp }}
+                {{ Assistance.timestamp }}
             </div>
         </div>
 
@@ -99,21 +99,21 @@ Enen
     <div class="card text-center" style="margin-left:5%;margin-right:5%;">
 
         <div class="card-header">
-            Completed Request of User
+            Completed User Requests
         </div>
 
         <div class="card-body">
-            <h1 class="card-title"> {{ prescription.patient.name }} </h1>
-            <p class="card-text lead" style=""><br>{{ prescription.prescriptionText }}<br><br> <span>
+            <h1 class="card-title"> {{ Assistance.patient.name }} </h1>
+            <p class="card-text lead" style=""><br>{{ Assistance.assistanceText }}<br><br> <span>
                     <h3>User's Symptoms</h3>
-                </span> {{ prescription.symptoms }}</p>
-            <a href="#" class="btn btn-primary" style="margin-top:1%">Contact Number : {{ prescription.patient.contactNumber }}</a>
-            <a href="#" class="btn btn-primary" style="margin-top:1%">Email : {{ prescription.patient.email }}</a>
-            <a href="#" class="btn btn-primary" style="margin-top:1%">Address : {{ prescription.patient.address }}</a>
+                </span> {{ Assistance.symptoms }}</p>
+            <a href="#" class="btn btn-primary" style="margin-top:1%">Contact Number : {{ Assistance.patient.contactNumber }}</a>
+            <a href="#" class="btn btn-primary" style="margin-top:1%">Email : {{ Assistance.patient.email }}</a>
+            <a href="#" class="btn btn-primary" style="margin-top:1%">Address : {{ Assistance.patient.address }}</a>
         </div>
 
         <div class="card-footer text-muted">
-            {{ prescription.timestamp }}
+            {{ Assistance.timestamp }}
         </div>
 
     </div>
