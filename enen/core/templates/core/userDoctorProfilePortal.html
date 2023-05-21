@@ -51,9 +51,9 @@ Enen
                     <br>
 
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Please type the prescription.</label>
+                        <label for="exampleFormControlTextarea1">Please type the Response.</label>
                         <textarea name="prescription" style="text-align:center" class="form-control"
-                            id="exampleFormControlTextarea1" rows="3" placeholder="Prescription"></textarea>
+                            id="exampleFormControlTextarea1" rows="3" placeholder="Your Response"></textarea>
                         <input type="hidden" name="prescriptionID" value="{{ prescription.id }}">
                     </div>
 
@@ -76,7 +76,7 @@ Enen
                             class="badge badge-success">CONFIRM</span></label>
                 </div>
 
-                <button type="submit" class="btn btn-warning" style="margin-left:10%;margin-right:10%"">Submit Patient Prescription</button><br>
+                <button type="submit" class="btn btn-warning" style="margin-left:10%;margin-right:10%"">Submit</button><br>
 
                         <li class=" dropdown-divider" style="margin-left:25%;margin-right:25%"></li>
 
@@ -105,7 +105,7 @@ Enen
         <div class="card-body">
             <h1 class="card-title"> {{ prescription.patient.name }} </h1>
             <p class="card-text lead" style=""><br>{{ prescription.prescriptionText }}<br><br> <span>
-                    <h3>Patient's Symptoms</h3>
+                    <h3>User's Symptoms</h3>
                 </span> {{ prescription.symptoms }}</p>
             <a href="#" class="btn btn-primary" style="margin-top:1%">Contact Number : {{ prescription.patient.contactNumber }}</a>
             <a href="#" class="btn btn-primary" style="margin-top:1%">Email : {{ prescription.patient.email }}</a>
