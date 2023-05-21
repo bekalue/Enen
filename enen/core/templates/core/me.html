@@ -15,32 +15,29 @@ Enen
     {% block body %}
     <br>
 
-    <div class="jumbotron jumbotron-fluid"
-        style="margin-left:5%;margin-right:5%;background:rgba(0,0,0,0.6);color:white;">
-        <div class="container">
-
-            <h1>Address</h1>
-
-            <p class="lead">CMC Bole, Addis Ababa, Ethipia</p>
-            <button class="btn btn-info"> Contact Me</button>
-
-            <br>
-            <br>
-
-            <h1>Email</h1>
-
-            <p class="lead">Suggestions and feedback are thoroughly welcomed.</p>
-            <button class="btn btn-info">bekalu2054@gmail.com</button>
-
-            <br>
-            <br>
-
-            <h1>Reception Contact Numbers</h1>
-
-            <p class="lead">Please feel free to call me anytime.</p>
-            <button class="btn btn-info">Contact Numbers : 0967241610</button>
-
-        </div>
+<div class="jumbotron jumbotron-fluid"
+    style="margin-left:5%;margin-right:5%;background:rgba(0,0,0,0.6);color:white; overflow:hidden;">
+    <div class="container">
+        <img src="{% static 'core/images/me.jpg' %}" style="float:right; width:50%;">
+        <h1>Address</h1>
+        <p class="lead">CMC Bole, Addis Ababa, Ethipia</p>
+        <br><br>
+        <h1>Email</h1>
+        <p class="lead">Suggestions and feedback are thoroughly welcomed.</p>
+        <a class="btn btn-info" href="mailto:webmaster@example.com">Mail Me</a>
+        <br><br>
+        <h1>Contact Number</h1>
+        <p class="lead">Please feel free to call me anytime.</p>
+        <a class="btn btn-info" href="tel:0967241610">Contact Me</a>
+        <br><br>
+        <h1>Github</h1>
+        <p class="lead">You can find me on Github.</p>
+        <a class="btn btn-info" href="https://github.com/bekalue">Github</a>
+        <br><br>
+        <h1>Project Repo</h1>
+        <p class="lead">You can find the project repo on Github.</p>
+        <a class="btn btn-info" href="https://github.com/bekalue/Enen.git">Project Repo</a>
     </div>
+</div>
 
-    {% endblock %}
+{% endblock %}
