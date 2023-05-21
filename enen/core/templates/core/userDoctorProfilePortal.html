@@ -15,7 +15,7 @@ Enen
     {% block body %}
 
     <h1 style="text-align:center;color:black" class="display-4">
-        Your Prescriptions
+        Your Requests
     </h1>
 
     <li class="dropdown-divider" style="margin-left:25%;margin-right:25%;border-color:black"></li>
@@ -38,7 +38,7 @@ Enen
         {% csrf_token %}
         <div class="card text-center" style="margin-left:5%;margin-right:5%;">
 
-            <div class="card-header">Prescription</div>
+            <div class="card-header">Help Request</div>
 
             <div class="card-body">
 
@@ -61,7 +61,7 @@ Enen
                     <br>
 
                     <span>
-                        <h3>Patient's Symptoms</h3>
+                        <h3>User's Symptoms</h3>
                     </span>
 
                     {{ prescription.symptoms }}
@@ -102,7 +102,7 @@ Enen
     <div class="card text-center" style="margin-left:5%;margin-right:5%;">
 
         <div class="card-header">
-            Completed Prescription of Patient
+            Completed Request of User
         </div>
 
         <div class="card-body">
@@ -128,7 +128,7 @@ Enen
     {% empty %}
 
     <h1 style="text-align:center;color:white">
-        You have no prescriptions right now.
+        You have no Requests right now.
     </h1>
 
     {% endfor %}
