@@ -15,22 +15,21 @@ def responseHeadersModifier(response):
 def requestSessionInitializedChecker(request):
     """Function to initialize request sessions if they don't exist."""
 
-    # Try except for KeyError
-    try:
-        # Checking if session variables exist
-        if request.session['isDoctor'] and request.session['isLoggedIn'] and request.session['userEmail'] and request.session['Name'] and request.session['numberNewPrescriptions']:
-            # Do nothing if they do exist
-            pass
-    except:
-        # Initialize request variables if they don't exist
+    # Checking if session variables exist
+    if not request.session.get('isDoctor'):
         request.session['isDoctor'] = ""
+    if not request.session.get('isLoggedIn'):
         request.session['isLoggedIn'] = False
+    if not request.session.get('userEmail'):
         request.session['userEmail'] = ""
+    if not request.session.get('Name'):
         request.session['Name'] = ""
+    if not request.session.get('numberNewPrescriptions'):
         request.session['numberNewPrescriptions'] = ""
 
     # Returning request
     return request
+
 
 def index(request):
     """ Function for displaying main page of website. """
@@ -107,19 +106,16 @@ def doctors(request):
 
     # Storing doctors available in the context variable
     context = {
-        "doctors" : Doctor.objects.all()
+        "doctors" : Doctor.objects.all(),
+        "message":"Please Login First."
     }
-    if request.session['isLoggedIn']:
+    if request.session.get('isLoggedIn', False):
         # Editing response headers so as to ignore cached versions of pages
         response = render(request,"core/doctors.html",context)
         return responseHeadersModifier(response)
     else:
-        con = {
-                    "message":"Please Login First."
-            }
-
         # Editing response headers so as to ignore cached versions of pages
-        response = render(request, "core/doctors.html", con)
+        response = render(request, "core/doctors.html", context)
         return responseHeadersModifier(response)
 
 def login(request):
