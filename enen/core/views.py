@@ -119,6 +119,7 @@ def doctors(request):
         return responseHeadersModifier(response)
 
 def login(request):
+    print("Login view called")
     """ Function for logging in the user. """
 
     # Calling session variables checker
@@ -130,6 +131,7 @@ def login(request):
 
             # If the user is already logged in inside of his sessions, and is a doctor, then no authentication required
             if request.session['isLoggedIn'] and request.session['isDoctor']:
+                print("User is logged in and is a doctor")
 
                 # Accessing the doctor user and all his/her records
                 doctor = Doctor.objects.get(emailHash = request.session['userEmail'])
@@ -154,6 +156,7 @@ def login(request):
 
             # If the user is already logged in inside of his sessions, and is a patient, then no authentication required
             elif request.session['isLoggedIn'] and (not request.session['isDoctor']):
+                print("User is logged in and is a patient")
 
                 # Accessing the patient user and all his/her records
                 patient = Patient.objects.get(emailHash = request.session['userEmail'])
@@ -183,12 +186,14 @@ def login(request):
                 return responseHeadersModifier(response)
 
             else:
+                print("User is not logged in")
                 # Editing response headers so as to ignore cached versions of pages
                 response = render(request,"core/login.html")
                 return responseHeadersModifier(response)
 
         # If any error occurs, sending back a new blank page
-        except:
+        except Exception as e:
+            print(f"An error occurred: {e}")
 
             # Editing response headers so as to ignore cached versions of pages
             response = render(request,"core/login.html")
