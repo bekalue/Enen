@@ -492,3 +492,8 @@ def requests(request):
     # Editing response headers so as to ignore cached versions of pages
     response = render(request,"core/userDoctorProfilePortal.html", context)
     return responseHeadersModifier(response)
+
+
+def about(request):
+    response = render(request, "core/me.html")
+    return responseHeadersModifier(response)
