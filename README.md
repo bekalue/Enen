@@ -17,3 +17,9 @@ To deactivate the virtual environment:
 ```powershell
 deactivate
 ```
+## Technologies Used
+
+- Django
+- HTML/CSS
+- Bootstrap
+- SQLite
