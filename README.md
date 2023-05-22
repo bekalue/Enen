@@ -14,7 +14,7 @@ pip install -r requirements.txt
 cd enen
 py manage.py runserver
 ```
-To deactivate the virtual environment:
+To deactivate the virtual environment on powershell, simply type:
 ```powershell
 deactivate
 ```
@@ -27,6 +27,10 @@ cd enen
 pip install django
 pip install pycrypto
 python3 manage.py runserver
+```
+To deactivate the virtual environment on Ubuntu, simply type:
+```powershell
+deactivate
 ```
 ## Technologies Used
 
