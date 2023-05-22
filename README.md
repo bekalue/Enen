@@ -21,7 +21,19 @@ __Enen__ is a simple web application that connects people with immediate virtual
 ## Live Site
 __Website Link__: [Enen](http://enen.bekalue.tech/)
 
-## Usage
+## Key Features ⭐
+
+- User authentication and registration
+- 
+
+## Technologies Used 💻
+
+- Django
+- HTML/CSS
+- Bootstrap
+- SQLite
+
+## Getting Started 💁🏽
 ### Windows Powershell
 ```powershell
 git clone https://github.com/bekalue/Enen.git
@@ -49,9 +61,3 @@ To deactivate the virtual environment on Ubuntu, simply type:
 ```powershell
 deactivate
 ```
-## Technologies Used
-
-- Django
-- HTML/CSS
-- Bootstrap
-- SQLite
