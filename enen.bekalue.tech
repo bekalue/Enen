@@ -1,0 +1,25 @@
+server {
+    listen 80;
+    listen [::]:80;
+
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    add_header X-Served-By $HOSTNAME;
+
+    server_name enen.bekalue.tech;
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/home/ubuntu/Enen/enen.sock;
+    }
+    location /static/ {
+        alias /home/ubuntu/Enen/enen/core/static/core/;
+        try_files $uri $uri/ =404;
+    }
+    error_page 404 /404.html;
+    location = /404.html {
+        root /var/www/error;
+        internal;
+    }
+}

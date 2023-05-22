@@ -50,6 +50,12 @@ Enen
 
                     <br>
 
+		    <span>
+                        <h3>Case/Symptoms</h3>
+                    </span>
+
+                    {{ Assistance.symptoms }}
+
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Please type the Response.</label>
                         <textarea name="Assistance" style="text-align:center" class="form-control"
@@ -59,12 +65,6 @@ Enen
 
                     <br>
                     <br>
-
-                    <span>
-                        <h3>User's Symptoms</h3>
-                    </span>
-
-                    {{ Assistance.symptoms }}
 
                 </div>
 
@@ -103,10 +103,10 @@ Enen
         </div>
 
         <div class="card-body">
-            <h1 class="card-title"> {{ Assistance.patient.name }} </h1>
-            <p class="card-text lead" style=""><br>{{ Assistance.assistanceText }}<br><br> <span>
-                    <h3>User's Symptoms</h3>
+            <h1 class="card-title"> {{ Assistance.patient.name }} </h1> <span>
+                    <h3>Case/Symptoms</h3>
                 </span> {{ Assistance.symptoms }}</p>
+            <p class="card-text lead" style=""><br>{{ Assistance.assistanceText }}<br><br>
             <a href="#" class="btn btn-primary" style="margin-top:1%">Contact Number : {{ Assistance.patient.contactNumber }}</a>
             <a href="#" class="btn btn-primary" style="margin-top:1%">Email : {{ Assistance.patient.email }}</a>
             <a href="#" class="btn btn-primary" style="margin-top:1%">Address : {{ Assistance.patient.address }}</a>
