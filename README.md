@@ -27,7 +27,7 @@ __Website Link__: [Enen](http://enen.bekalue.tech/)
 - Interface for interaction of Doctors and Users through the Request and Recieve Help portal
 - User profile and Information
 - History of Interaction between Doctor And User
-- Notify users for Available Doctors And Showing Phone Numbers
+- Show users for available Doctors And their Phone Numbers
 
 ## Technologies Used 💻
 
