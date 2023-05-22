@@ -2,3 +2,5 @@ Django
 pycrypto
 cryptography
 pycryptodome
+textutils
+gunicorn
