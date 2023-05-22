@@ -5,6 +5,8 @@
 ![py](https://img.shields.io/badge/Python-3.11.3-yellowgreen)
 ![stat](https://img.shields.io/badge/status-up-green)
 
+> Do you want to know why i named my Project `Enen`?🤷🏽‍♂️ Well....
+
 > The word `Enen` is a common and versatile expression in Amharic Language that is used to convey comfort, sympathy, or empathy. It is often used when someone is experiencing physical or emotional pain, and can be used to show that the speaker cares and wants to offer support.
 
 > For example, if a child falls and scrapes their knee, a mother might say `enen` while comforting the child and tending to their injury. Similarly, if someone is upset or crying, a friend might say `enen` to show that they understand and want to offer support.
