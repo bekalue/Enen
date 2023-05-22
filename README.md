@@ -7,7 +7,7 @@
 ## Usage
 __Windows Powershell__
 ```powershell
-git clone
+git clone https://github.com/bekalue/Enen.git
 cd Enen
 .\env\Scripts\Activate.ps1
 cd enen
