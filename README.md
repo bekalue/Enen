@@ -21,7 +21,7 @@ __LINK__: [Enen](http://enen.bekalue.tech/)
 ### Home Page
 
 <p align="center">
-  <img src="assets/site.png" width="550" title="Home Page">
+  <img src="assets/site.png" width="750" title="Home Page">
 </p>
 
 ## Usage
