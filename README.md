@@ -11,18 +11,15 @@
 
 > The expression can also be used in other situations where someone is experiencing discomfort or distress. For example, if someone is feeling cold, a friend might offer them a blanket and say `enen` to show that they care and want to help.
 
+<p align="center">
+  <img src="assets/site.png" width="900" title="Home Page">
+</p>
 
 ## About The Project
 __Enen__ is a simple web application that connects people with immediate virtual care for non-life-threatening illnesses and injuries. This app helps people avoid in-person doctor’s or clinic visits for minor health issues and questions that can easily be addressed via a one time Message or Phone calls. It connects users with remote physicians and doctors.
 
 ## Live Site
 __Website Link__: [Enen](http://enen.bekalue.tech/)
-
-### Home Page
-
-<p align="center">
-  <img src="assets/site.png" width="900" title="Home Page">
-</p>
 
 ## Usage
 ### Windows Powershell
