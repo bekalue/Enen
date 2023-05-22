@@ -5,7 +5,7 @@
 ![py](https://img.shields.io/badge/Python-3.11.3-yellowgreen)
 
 ## Usage
-__Windows Powershell__
+### __Windows Powershell__
 ```powershell
 git clone https://github.com/bekalue/Enen.git
 cd Enen
