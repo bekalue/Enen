@@ -17,6 +17,14 @@ To deactivate the virtual environment:
 ```powershell
 deactivate
 ```
+### Linux Ubuntu 20.04.6 LTS
+```shell
+git clone https://github.com/bekalue/Enen.git
+cd Enen
+source env/Scripts/activate                        (To activate virtual environment)
+cd enen
+python3 manage.py runserver
+```
 ## Technologies Used
 
 - Django
