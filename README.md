@@ -11,14 +11,32 @@
 
 > The expression can also be used in other situations where someone is experiencing discomfort or distress. For example, if someone is feeling cold, a friend might offer them a blanket and say `enen` to show that they care and want to help.
 
+<p align="center">
+  <img src="assets/site.png" width="900" title="Home Page">
+</p>
 
-## About The Project
+## About The Project 🤔
 __Enen__ is a simple web application that connects people with immediate virtual care for non-life-threatening illnesses and injuries. This app helps people avoid in-person doctor’s or clinic visits for minor health issues and questions that can easily be addressed via a one time Message or Phone calls. It connects users with remote physicians and doctors.
 
-## Live Site
-http://enen.bekalue.tech/
+## Live Site 🕸️
+__Website Link__: [Enen](http://enen.bekalue.tech/)
 
-## Usage
+## Key Features ⭐
+
+- User authentication and registration
+- Interface for interaction of Doctors and Users through the Request and Recieve Help portal
+- User profile and Information
+- History of Interaction between Doctor And User
+- Notify users for Available Doctors And Showing Phone Numbers
+
+## Technologies Used 💻
+
+- Django
+- HTML/CSS
+- Bootstrap
+- SQLite
+
+## Getting Started 💁🏽
 ### Windows Powershell
 ```powershell
 git clone https://github.com/bekalue/Enen.git
@@ -46,9 +64,3 @@ To deactivate the virtual environment on Ubuntu, simply type:
 ```powershell
 deactivate
 ```
-## Technologies Used
-
-- Django
-- HTML/CSS
-- Bootstrap
-- SQLite
