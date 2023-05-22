@@ -9,7 +9,11 @@ __Windows Powershell__
 ```powershell
 git clone https://github.com/bekalue/Enen.git
 cd Enen
-.\env\Scripts\Activate.ps1
+.\env\Scripts\Activate.ps1                        (To activate virtual environment)
 cd enen
 py manage.py runserver
+```
+To deactivate the virtual environment:
+```powershell
+deactivate
 ```
