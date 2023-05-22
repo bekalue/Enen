@@ -23,6 +23,8 @@ git clone https://github.com/bekalue/Enen.git
 cd Enen
 source env/Scripts/activate                        (To activate virtual environment)
 cd enen
+pip install django
+pip install pycrypto
 python3 manage.py runserver
 ```
 ## Technologies Used
