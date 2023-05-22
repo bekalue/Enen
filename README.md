@@ -1,4 +1,6 @@
 # Enen
+> `Enen` is an Amharic word that is often used as an expression of comfort or sympathy. It is similar to saying “aww” or “there, there” in English.
+> This expression used in situations where someone is experiencing physical or emotional pain.
 
 ![Enen](https://img.shields.io/github/last-commit/bekalue/Enen)
 ![Django](https://img.shields.io/badge/Django-4.2.1-green)
@@ -6,7 +8,7 @@
 ![stat](https://img.shields.io/badge/status-up-green)
 
 ## About
-Enen is a simple web application that connects people with immediate virtual care for non-life-threatening illnesses and injuries. This app helps people avoid in-person doctor’s or clinic visits for minor health issues and questions that can easily be addressed via a one time Message or Phone calls. It connects users with remote physicians and doctors.
+__Enen__ is a simple web application that connects people with immediate virtual care for non-life-threatening illnesses and injuries. This app helps people avoid in-person doctor’s or clinic visits for minor health issues and questions that can easily be addressed via a one time Message or Phone calls. It connects users with remote physicians and doctors.
 
 ## Usage
 ### Windows Powershell
