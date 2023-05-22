@@ -15,10 +15,10 @@
   <img src="assets/site.png" width="900" title="Home Page">
 </p>
 
-## About The Project
+## About The Project 🤔
 __Enen__ is a simple web application that connects people with immediate virtual care for non-life-threatening illnesses and injuries. This app helps people avoid in-person doctor’s or clinic visits for minor health issues and questions that can easily be addressed via a one time Message or Phone calls. It connects users with remote physicians and doctors.
 
-## Live Site
+## Live Site 🕸️
 __Website Link__: [Enen](http://enen.bekalue.tech/)
 
 ## Key Features ⭐
