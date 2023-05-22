@@ -24,7 +24,10 @@ __Website Link__: [Enen](http://enen.bekalue.tech/)
 ## Key Features ⭐
 
 - User authentication and registration
-- 
+- Interface for interaction of Doctors and Users through the Request and Recieve Help portal
+- User profile and Information
+- History of Interaction between Doctor And User
+- Notify users for Available Doctors And Showing Phone call 
 
 ## Technologies Used 💻
 
