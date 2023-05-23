@@ -1,6 +1,6 @@
 Django
 pycrypto
-cryptography
-# pycryptodome
+# cryptography		for windows
+# pycryptodome		for windows
 gunicorn
 djangorestframework
