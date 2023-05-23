@@ -149,7 +149,7 @@ def login(request):
                 }
 
                 # Editing response headers so as to ignore cached versions of pages
-                response = render(request,"core/userDoctorProfilePortal.html", context)
+                response = render(request,"core/userDoctorRequestPortal.html", context)
                 return responseHeadersModifier(response)
 
             # If the user is already logged in inside of his sessions, and is a patient, then no authentication required
@@ -179,7 +179,7 @@ def login(request):
                     }
 
                 # Editing response headers so as to ignore cached versions of pages
-                response = render(request,"core/userPatientProfilePortal.html", context)
+                response = render(request,"core/userPatientRequestPortal.html", context)
                 return responseHeadersModifier(response)
 
             else:
@@ -427,7 +427,7 @@ def onlinehelp(request):
                 }
 
                 # Editing response headers so as to ignore cached versions of pages
-                response = render(request, "core/userDoctorProfilePortal.html", context)
+                response = render(request, "core/userDoctorRequestPortal.html", context)
                 return responseHeadersModifier(response)
 
             # Else if the patient is submitting Assistance request
@@ -490,7 +490,7 @@ def requests(request):
     }
 
     # Editing response headers so as to ignore cached versions of pages
-    response = render(request,"core/userDoctorProfilePortal.html", context)
+    response = render(request,"core/userDoctorRequestPortal.html", context)
     return responseHeadersModifier(response)
 
 

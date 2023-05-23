@@ -416,7 +416,7 @@ class ClientsInteractionTestCase(TestCase):
         # Asserting correct status code, response headers and templates
         self.assertEqual(response.status_code, 200)
         self.assertTrue(checkResponseHeaders(response))
-        self.assertTemplateUsed(response, 'core/userDoctorProfilePortal.html', 'core/base.html')
+        self.assertTemplateUsed(response, 'core/userDoctorRequestPortal.html', 'core/base.html')
         # Asserting correct variable values in the session
         self.assertTrue(client.session["isLoggedIn"])
         self.assertTrue(client.session["isDoctor"])
@@ -486,7 +486,7 @@ class ClientsInteractionTestCase(TestCase):
         # Asserting correct status code, response headers and templates
         self.assertEqual(response.status_code, 200)
         self.assertTrue(checkResponseHeaders(response))
-        self.assertTemplateUsed(response, 'core/userPatientProfilePortal.html', 'core/base.html')
+        self.assertTemplateUsed(response, 'core/userPatientRequestPortal.html', 'core/base.html')
         # Asserting correct variable values in the session
         self.assertTrue(client.session["isLoggedIn"])
         self.assertFalse(client.session["isDoctor"])
