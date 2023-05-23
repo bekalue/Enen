@@ -3,3 +3,4 @@ pycrypto
 cryptography
 pycryptodome
 gunicorn
+djangorestframework
