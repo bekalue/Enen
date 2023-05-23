@@ -4,6 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .models import Doctor, Patient, Assistance, passwordHasher, emailHasher
 from django.db.models import Count, Q
+from rest_framework import viewsets
+from .serializers import DoctorSerializer, PatientSerializer, AssistanceSerializer
 
 def responseHeadersModifier(response):
     """Funtion to edit response headers so that no cached versions can be viewed. Returns the modified response."""
@@ -495,5 +497,34 @@ def requests(request):
 
 
 def about(request):
+    """Function to display about information."""
+
+    # Editing response headers so as to ignore cached versions of pages
     response = render(request, "core/me.html")
     return responseHeadersModifier(response)
+
+
+class DoctorViewSet(viewsets.ModelViewSet):
+    """ API endpoint that allows Doctors to be viewed or edited."""
+
+    # Querying all the doctors
+    queryset = Doctor.objects.all()
+    # Serializing the data
+    serializer_class = DoctorSerializer
+
+
+class PatientViewSet(viewsets.ModelViewSet):
+    """ API endpoint that allows Patients to be viewed or edited."""
+
+    # Querying all the patients
+    queryset = Patient.objects.all()
+    # Serializing the data
+    serializer_class = PatientSerializer
+
+class AssistanceViewSet(viewsets.ModelViewSet):
+    """ API endpoint that allows Assistances to be viewed or edited."""
+
+    # Querying all the Assistances
+    queryset = Assistance.objects.all()
+    # Serializing the data
+    serializer_class = AssistanceSerializer
