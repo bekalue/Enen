@@ -45,7 +45,7 @@ __Website Link__: [Enen](http://enen.bekalue.tech/)
 ```powershell
 git clone https://github.com/bekalue/Enen.git
 cd Enen
-.\env\Scripts\Activate.ps1                        (To activate virtual environment)
+.\env\bin\Activate.ps1                        (To activate virtual environment)
 pip install -r requirements.txt
 cd enen
 py manage.py runserver
@@ -58,7 +58,7 @@ deactivate
 ```shell
 git clone https://github.com/bekalue/Enen.git
 cd Enen
-source env/Scripts/activate                        (To activate virtual environment)
+source ./env/bin/activate                        (To activate virtual environment)
 cd enen
 pip install django
 pip install pycrypto
