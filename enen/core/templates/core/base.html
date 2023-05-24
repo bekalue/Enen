@@ -8,8 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <link rel="icon" href="{% static 'core/images/favicon.png' %}">
 
     <title>{% block title %}{% endblock %}</title>
     {% block style %}{% endblock %}
@@ -47,6 +50,7 @@
                         class="sr-only">(current)</span></a>
             </li>
 
+            {% if request.session.isLoggedIn %}
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" style="color:black" href="#" id="navbarDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -62,6 +66,7 @@
             
                 </div>
             </li>
+            {% endif %}
 
             {% if request.session.isLoggedIn %}
             <li class="nav-item">

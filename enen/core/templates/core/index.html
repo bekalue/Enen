@@ -22,7 +22,7 @@ height: 500px;
 
 {% load static %}
 
-<body background="{% static 'core/images/back.jpg' %}" style="background-size: auto auto;">
+<body background="{% static 'core/images/sky.avif' %}" style="background-size: auto auto;">
 
 {% endblock %}
 
@@ -36,10 +36,11 @@ height: 500px;
         <div class="jumbotron" style="flex: 1; margin: 0 auto;">
             <h1 class="display-4" style="color: green">Get immediate Virtual care for non-life-threatening</h1>
             <hr class="my-4">
-            <p>We help people avoid in-person doctor's or clinic visits for minor health and questions that can easily addressed via a one time message or Phone calls.</p>
+            <p>We help people avoid in-person doctor's or clinic visits for minor health and questions that can easily
+                addressed via a one time message or Phone calls.</p>
             <a class="btn btn-primary btn-lg" href="{% url 'register' %}" role="button">Get Started</a>
         </div>
-        <img src="{% static 'core/images/health.jpg' %}" style="flex: 1;">
+        <img src="{% static 'core/images/mom.png' %}" style="flex: 1;">
     </div>
     {% endif %}
 
@@ -112,7 +113,13 @@ height: 500px;
         
                         <h5 class="card-title">Online Help</h5>
                         <li class="dropdown-divider" style="margin-right:15%"></li>
-                        <p class="card-text">Get online hassle-free help from doctor.</p>
+                        <p class="card-text">In today’s fast-paced world, people are always on the go and often don’t have the time to schedule appointments or wait
+                        in long lines to see a doctor. However, for non-life-threatening cases, it is now possible for our users to write their case
+                        or symptoms to doctors and receive recommendations for action or medications.
+                        <br>
+                        Our method of communication is not only convenient but also efficient. You can quickly and easily send a message to
+                         doctors describing your symptoms or concerns. The doctors can then respond with advice on what actions to take or
+                        what medications to use.</p>
                         <a href="{% url 'onlinehelp' %}" class="btn btn-primary">REQUEST HELP</a>
         
                     </div>
@@ -125,7 +132,11 @@ height: 500px;
         
                         <h5 class="card-title">Call Doctors</h5>
                         <li class="dropdown-divider" style="margin-right:15%"></li>
-                        <p class="card-text">24 x 7 Help Line Availability.</p>
+                        <p class="card-text">With Us, It is possible for you to call doctors from anywhere and for any case. You can quickly and easily make a phone call
+                        to your doctor to discuss about symptoms or concerns. The doctor can then provide advice on what actions to take or what medications to use.
+                        <br>
+                        If You are in Remote Area where there are no medical services, we have solution for you. You can receive medical advice without having to leave your homes. <br>
+                         Just call any remote Physicians to get quick and easy access to medical advice and care, improve your overall health and well-being. </p>
                         <a href="{% url 'contact' %}" class="btn btn-primary">CALL</a>
         
                     </div>
@@ -136,6 +147,79 @@ height: 500px;
         {% endif %}
         
     </div>
+    {% if request.session.isLoggedIn %}
+    {% else %}
+    <hr class="my-4">
+    <h1 class="display-3" style="text-align:center;color:black">Testimonies</h1>
+    <li class="dropdown-divider" style="margin-left:25%;margin-right:25%;border-color:black"></li>
+    <div style="padding: 10px;">
+        <div class="wrapper">
+            <div class="box">
+                <i class="fas fa-quote-left quote"></i>
+                <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat
+                    thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+                <div class="content">
+                    <div class="info">
+                        <div class="name">Marteen Van Midlar</div>
+                        <div class="job">Assistant | Developer</div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="image">
+                        <img src="{% static 'core/images/marteen.jpg' %}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <i class="fas fa-quote-left quote"></i>
+                <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat
+                    thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+                <div class="content">
+                    <div class="info">
+                        <div class="name">Steven Chris</div>
+                        <div class="job">YouTuber | Blogger</div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="image">
+                        <img src="{% static 'core/images/gulame.jpg' %}" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="box">
+                <i class="fas fa-quote-left  quote"></i>
+                <p>Lorem aliasry ipsum dolor sits ametans, consectetur adipisicing elitits. Expedita reiciendis itaque placeat
+                    thuratu, quasi yiuos repellendus repudiandae deleniti ideas fuga molestiae, alias.</p>
+                <div class="content">
+                    <div class="info">
+                        <div class="name">Kristina Bellis</div>
+                        <div class="job">Freelancer | Advertiser</div>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="image">
+                        <img src="{% static 'core/images/barbier.jpeg' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
 
     {% if request.session.isLoggedIn %}
     <div id="Footer" style="bottom: 0; position: fixed; width: 100%">
