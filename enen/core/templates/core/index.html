@@ -290,14 +290,25 @@ Enen
     {% endif %}
 
     {% if request.session.isLoggedIn %}
-    <div id="Footer" style="bottom: 0; position: fixed; width: 100%">
-        <h6 style="text-align:center;color:black;background-color:#dddddd;margin: 0 auto;">
-            <hr class="my-4" style="margin: 0 auto;">
-            Enen Virtual Health ©2023
-            <br>
-            <br>
-        </h6>
-    <div>
+    <div class="footer-bottom pt_50 pb_50" style="padding-top: 10px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-menu">
+                        <ul>
+                            <li><a href="https://enen.bekalue.tech">Home</a></li>
+                            <li><a href="https://enen.bekalue.tech">Terms &amp; Conditions</a></li>
+                            <li><a href="https://enen.bekalue.tech">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="copy-text">
+                        <p>
+                            Copyright © 2023, Enen Virtual Health. Ltd. All Rights Reserved. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     {% else %}
     <div class="footer-bottom pt_50 pb_50" style="padding-top: 10px;">
         <div class="container">
