@@ -90,48 +90,96 @@ Enen
         </div>
         {% endif %}
         {% else %}
-        <hr class="my-4">
-        <h1 class="display-3" style="text-align:center;color:black">BENEFITS</h1>
-        <li class="dropdown-divider" style="margin-left:25%;margin-right:25%;border-color:black"></li>
-        
-        <div class="row" style="margin: 0 auto;">
-        
-            <div class="col-sm-6" style="margin-top:2%">
-                <div class="card">
-                    <div class="card-body">
-        
-                        <h5 class="card-title">Online Help</h5>
-                        <li class="dropdown-divider" style="margin-right:15%"></li>
-                        <p class="card-text">In today’s fast-paced world, people are always on the go and often don’t have the time to schedule appointments or wait
-                        in long lines to see a doctor. However, for non-life-threatening cases, it is now possible for our users to write their case
-                        or symptoms to doctors and receive recommendations for action or medications.
-                        <br>
-                        Our method of communication is not only convenient but also efficient. You can quickly and easily send a message to
-                         doctors describing your symptoms or concerns. The doctors can then respond with advice on what actions to take or
-                        what medications to use.</p>
-                        <a href="{% url 'onlinehelp' %}" class="btn btn-primary">REQUEST HELP</a>
-        
+        <div style="margin-top:2em" class="choose-area pb_90">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="headline">
+                            <h2>WHY CHOOSE US</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: -1em">
+                    <div class="col-lg-4">
+                        <div class="choose-item flex" style="background-image: url(https://danphehealth.com/public/uploads/why-choose-1.png)">
+                            <div class="choose-icon">
+                                <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                            </div>
+                            <div class="choose-text">
+                                <h4>Built by doctors for doctors</h4>
+                                <p>
+                                    We have your efficiency and ease in mind,  so we have developed an user-friendly solution.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="choose-item flex" style="background-image: url(https://danphehealth.com/public/uploads/why-choose-7.png)">
+                            <div class="choose-icon">
+                                <i class="fa fa-globe" aria-hidden="true"></i>
+                            </div>
+                            <div class="choose-text">
+                                <h4>Built on sound technology</h4>
+                                <p>
+                                    Danphe is built with .NET and web based open source technologies. The technology we use is industry standard, reliable and is evolving with time.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="choose-item flex" style="background-image: url(https://danphehealth.com/public/uploads/why-choose-8.jpg)">
+                            <div class="choose-icon">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                            </div>
+                            <div class="choose-text">
+                                <h4>Customizable & Scalable</h4>
+                                <p>
+                                    We built it from the bottom up, so we can customize to your needs. Also, as your business grows, Danphe can scale to meet your demands
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="choose-item flex" style="background-image: url(https://danphehealth.com/public/uploads/why-choose-10.jpg)">
+                            <div class="choose-icon">
+                                <i class="fa fa-box" aria-hidden="true"></i>
+                            </div>
+                            <div class="choose-text">
+                                <h4>All-in-one product</h4>
+                                <p>
+                                    No need to have many software applications. We provide comphrehensive EHR and HMS.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="choose-item flex" style="background-image: url(https://danphehealth.com/public/uploads/why-choose-11.jpg)">
+                            <div class="choose-icon">
+                                <i class="fa fa-globe" aria-hidden="true"></i>
+                            </div>
+                            <div class="choose-text">
+                                <h4>Excellent Customer Support</h4>
+                                <p>
+                                    We understand that there is no downtime in healthcare; so there is no downtime in our application.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="choose-item flex" style="background-image: url(https://danphehealth.com/public/uploads/why-choose-12.jpg)">
+                            <div class="choose-icon">
+                                <i class="fa fa-globe" aria-hidden="true"></i>
+                            </div>
+                            <div class="choose-text">
+                                <h4>On Premises and Cloud based services</h4>
+                                <p>
+                                    We offer both on premises and cloud based services catering to your needs.
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        
-            <div class="col-sm-6" style="margin-top:2%">
-                <div class="card">
-                    <div class="card-body">
-        
-                        <h5 class="card-title">Call Doctors</h5>
-                        <li class="dropdown-divider" style="margin-right:15%"></li>
-                        <p class="card-text">With Us, It is possible for you to call doctors from anywhere and for any case. You can quickly and easily make a phone call
-                        to your doctor to discuss about symptoms or concerns. The doctor can then provide advice on what actions to take or what medications to use.
-                        <br>
-                        If You are in Remote Area where there are no medical services, we have solution for you. You can receive medical advice without having to leave your homes. <br>
-                         Just call any remote Physicians to get quick and easy access to medical advice and care, improve your overall health and well-being. </p>
-                        <a href="{% url 'contact' %}" class="btn btn-primary">CALL</a>
-        
-                    </div>
-                </div>
-            </div>
-        
         </div>
         {% endif %}
         
@@ -139,8 +187,13 @@ Enen
     {% if request.session.isLoggedIn %}
     {% else %}
     <hr class="my-4">
-    <h1 class="display-3" style="text-align:center;color:black">Testimonials</h1>
-    <li class="dropdown-divider" style="margin-left:25%;margin-right:25%;border-color:black"></li>
+    <div class="row">
+        <div class="col-12">
+            <div class="headline">
+                <h2>Testimonials</h2>
+            </div>
+        </div>
+    </div>
     <section class="client_section layout_padding-bottom">
         <div class="container">
             <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
@@ -154,7 +207,7 @@ Enen
                                     </div>
                                     <div class="detail-box">
                                         <div class="name">
-                                            <h6>
+                                            <h6 style="color: green">
                                                 Alan Emerson
                                             </h6>
                                         </div>
@@ -179,7 +232,7 @@ Enen
                                     </div>
                                     <div class="detail-box">
                                         <div class="name">
-                                            <h6>
+                                            <h6 style="color: green">
                                                 Alan Emerson
                                             </h6>
                                         </div>
@@ -204,7 +257,7 @@ Enen
                                     </div>
                                     <div class="detail-box">
                                         <div class="name">
-                                            <h6>
+                                            <h6 style="color: green">
                                                 Alan Emerson
                                             </h6>
                                         </div>
@@ -246,14 +299,25 @@ Enen
         </h6>
     <div>
     {% else %}
-    <div id="Footer" style="bottom: 0">
-        <h6 style="text-align:center;color:black;background-color:#dddddd;margin: 0 auto;">
-            <hr class="my-4" style="margin: 0 auto;">
-            Enen Virtual Health ©2023
-            <br>
-            <br>
-        </h6>
-    <div>
+    <div class="footer-bottom pt_50 pb_50" style="padding-top: 10px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="footer-menu">
+                        <ul>
+                            <li><a href="https://enen.bekalue.tech">Home</a></li>
+                            <li><a href="https://enen.bekalue.tech">Terms &amp; Conditions</a></li>
+                            <li><a href="https://enen.bekalue.tech">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div class="copy-text">
+                        <p>
+                            Copyright © 2023, Enen Virtual Health. Ltd. All Rights Reserved. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     {% endif %}
 
 {% endblock %}

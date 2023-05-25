@@ -1,0 +1,52 @@
+/*Layout*/
+@media only screen and (min-width: 991px) and (max-width: 1200px) {
+	.services-photo {
+		height: 164px;
+	}
+}
+
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+	.services-photo {
+		height: 284px;
+	}
+}
+
+
+
+@media only screen and (min-width: 500px) and (max-width:575px) {
+	.services-photo {
+		height: 276px;
+	}
+	
+}
+
+@media only screen and (min-width: 410px) and (max-width:499px) {
+	.services-photo {
+		height: 234px;
+	}
+}
+
+@media only screen and (min-width: 360px) and (max-width:409px) {
+	.services-photo {
+		height: 194px;
+	}
+}
+
+@media only screen and (max-width:359px) {
+	.services-photo {
+		height: 160px;
+	}
+}
+
+
+@media (min-width: 576px) {
+	.modal-dialog {
+		max-width: 700px!important;
+		margin-top: -20px!important;
+	}
+}
+
+
+@media only screen and (min-width: 0px) and (max-width: 500px) {
+	.footer-menu ul li {float: none!important;display: block!important;}
+}
