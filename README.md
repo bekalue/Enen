@@ -36,7 +36,7 @@ __Website Link__: [Enen](http://enen.bekalue.tech/)
 ## Technologies Used 💻
 
 - Django
-- HTML/Javascript
+- HTML/CSS/Javascript
 - Bootstrap
 - SQLite
 
