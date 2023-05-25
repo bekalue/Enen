@@ -35,6 +35,7 @@ urlpatterns = [
     path('contact', views.contact, name = "contact"),
     path('onlinehelp', views.onlinehelp, name = "onlinehelp"),
     path('requests', views.requests, name = "requests"),
+    path('profile', views.profile, name = "profile"),
     path('about', views.about, name = "about"),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),

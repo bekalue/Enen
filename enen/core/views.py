@@ -503,6 +503,13 @@ def about(request):
     response = render(request, "core/me.html")
     return responseHeadersModifier(response)
 
+def profile(request):
+    """Function to display profile information."""
+
+    # Calling session variables checker
+    request = requestSessionInitializedChecker(request)
+    
+
 
 class DoctorViewSet(viewsets.ModelViewSet):
     """ API endpoint that allows Doctors to be viewed or edited."""
