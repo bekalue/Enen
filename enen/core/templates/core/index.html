@@ -11,7 +11,7 @@ Enen
 
 {% load static %}
 
-<body background="{% static 'core/images/back.jpg' %}" style="background-size: auto auto;">
+<body background="{% static 'core/images/back.png' %}" style="background-size: auto auto;">
 
 {% endblock %}
 
@@ -21,7 +21,7 @@ Enen
 
     {% if request.session.isLoggedIn %}
     {% else %}
-    <div style="display: flex;">
+    <div class ="main" style="display: flex;">
         <div class="jumbotron" style="flex: 1; margin: 0 auto;">
             <h1 class="display-4" style="color: green">Get immediate Virtual care for non-life-threatening</h1>
             <hr class="my-4">
@@ -101,12 +101,12 @@ Enen
                 </div>
                 <div class="row" style="margin-top: -1em">
                     <div class="col-lg-4">
-                        <div class="choose-item flex" background="{% static 'core/images/1.jpg' %}">
+                        <div class="choose-item flex" style="background-image: url({% static 'core/images/1.jpg' %});">
                             <div class="choose-icon">
                                 <i class="fa fa-thumbs-up" aria-hidden="true"></i>
                             </div>
                             <div class="choose-text">
-                                <h4>Built by doctors for doctors</h4>
+                                <h4>Built with Love for You</h4>
                                 <p>
                                     We have your efficiency and ease in mind,  so we have developed an user-friendly solution.
                                 </p>
@@ -114,46 +114,46 @@ Enen
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="choose-item flex" background="{% static 'core/images/1.jpg' %}">
+                        <div class="choose-item flex" style="background-image: url({% static 'core/images/2.jpg' %});">
                             <div class="choose-icon">
                                 <i class="fa fa-globe" aria-hidden="true"></i>
                             </div>
                             <div class="choose-text">
                                 <h4>Built on sound technology</h4>
                                 <p>
-                                    Danphe is built with .NET and web based open source technologies. The technology we use is industry standard, reliable and is evolving with time.
+                                    Enen is built with Django and web based open source technologies. The technology we use is industry standard, reliable and is evolving with time.
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="choose-item flex" background="{% static 'core/images/1.jpg' %}">
+                        <div class="choose-item flex" style="background-image: url({% static 'core/images/3.avif' %});">
                             <div class="choose-icon">
                                 <i class="fa fa-clock-o" aria-hidden="true"></i>
                             </div>
                             <div class="choose-text">
                                 <h4>Customizable & Scalable</h4>
                                 <p>
-                                    We built it from the bottom up, so we can customize to your needs. Also, as your business grows, Danphe can scale to meet your demands
+                                    We built it from the bottom up, so we can customize to your needs. Also, as your needs grows, Enen can scale to meet your demands
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="choose-item flex" background="{% static 'core/images/1.jpg' %}">
+                        <div class="choose-item flex" style="background-image: url({% static 'core/images/4.avif' %});">
                             <div class="choose-icon">
                                 <i class="fa fa-box" aria-hidden="true"></i>
                             </div>
                             <div class="choose-text">
-                                <h4>All-in-one product</h4>
+                                <h4>Free Service</h4>
                                 <p>
-                                    No need to have many software applications. We provide comphrehensive EHR and HMS.
+                                    No need to Pay for our service since we have been founded by non-profit organization. We provide comprehensive service with ease.
                                 </p>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="choose-item flex" background="{% static 'core/images/1.jpg' %}">
+                        <div class="choose-item flex" style="background-image: url({% static 'core/images/5.avif' %});">
                             <div class="choose-icon">
                                 <i class="fa fa-globe" aria-hidden="true"></i>
                             </div>
@@ -166,14 +166,14 @@ Enen
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="choose-item flex" background="{% static 'core/images/1.jpg' %}">
+                        <div class="choose-item flex" style="background-image: url({% static 'core/images/6.avif' %});">
                             <div class="choose-icon">
                                 <i class="fa fa-globe" aria-hidden="true"></i>
                             </div>
                             <div class="choose-text">
-                                <h4>On Premises and Cloud based services</h4>
+                                <h4>World Wide Access</h4>
                                 <p>
-                                    We offer both on premises and cloud based services catering to your needs.
+                                    We offer our services to world wide users seeking virtual heathcare.
                                 </p>
                             </div>
                         </div>
@@ -203,7 +203,7 @@ Enen
                             <div class="col-md-11 col-lg-10 mx-auto">
                                 <div class="box">
                                     <div class="img-box">
-                                        <img src="{% static 'core/images/helen.avif' %}" alt="" />
+                                        <img src="{% static 'core/images/helen.jpg' %}" alt="" />
                                     </div>
                                     <div class="detail-box">
                                         <div class="name">
