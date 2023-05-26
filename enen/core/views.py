@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
@@ -508,7 +509,61 @@ def profile(request):
 
     # Calling session variables checker
     request = requestSessionInitializedChecker(request)
-    
+
+    # If the request method is get
+    if request.method == "GET":
+        
+        # If the user is logged in
+        if request.session['isLoggedIn']:
+            
+            # Portal only for patient Assistance request submission, not for doctors
+            if request.session['isDoctor']:
+
+                # fetching the doctor records
+                doctor = Doctor.objects.get(emailHash = request.session['userEmail'])
+
+                # Storing message inside context variable
+                context = {
+                    "user": doctor
+                    }
+                
+                # Editing response headers so as to ignore cached versions of pages
+                response = render(request, "core/profile.html", context)
+                return responseHeadersModifier(response)
+            
+            # If the user is a patient
+            else:
+                
+                # fetching the patient records
+                patient = Patient.objects.get(emailHash = request.session['userEmail'])
+
+                # Storing available doctors inside context variable
+                context = {
+                    "user" : patient
+                    }
+                
+                # Editing response headers so as to ignore cached versions of pages
+                response = render(request, "core/profile.html", context)
+                return responseHeadersModifier(response)
+            
+
+def update_profile_picture(request):
+    if request.method == 'POST':
+        if request.session['isDoctor']:
+            user = Doctor.objects.get(emailHash=request.session['userEmail'])
+        else:
+            user = Patient.objects.get(emailHash=request.session['userEmail'])
+        image = request.FILES.get('image')
+        if image:
+            user.image = image
+            user.save()
+            messages.success(request, 'Profile picture updated successfully!')
+        else:
+            messages.error(request, 'Please select an image to upload.')
+        return redirect('profile')
+    else:
+        return redirect('profile')
+
 
 
 class DoctorViewSet(viewsets.ModelViewSet):

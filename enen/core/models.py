@@ -12,6 +12,7 @@ class Doctor(models.Model):
     specialization = models.CharField(max_length = 100)
     passwordHash = models.CharField(max_length = 64)
     emailHash = models.CharField(max_length = 64)
+    image = models.ImageField(upload_to='profile_images/', default='profile_images/default.jpg')
 
     def __str__(self):
         return "Name : " + self.name + " Address : " + self.address + " Contact : " + self.contactNumber + " Email : " + self.email + " Specialization : " + self.specialization
@@ -24,6 +25,7 @@ class Patient(models.Model):
     userId = models.CharField(unique = True, max_length = 8)
     passwordHash = models.CharField(max_length = 64)
     emailHash = models.CharField(max_length = 64)
+    image = models.ImageField(upload_to='profile_images/', default='profile_images/default.jpg')
 
     def __str__(self):
         return "Name : " + self.name + " Address : " + self.address + " Contact : " + self.contactNumber + " Email : " + self.email

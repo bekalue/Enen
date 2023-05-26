@@ -71,6 +71,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'enen.wsgi.application'
 
+# profile images will be stored in media folder
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases

@@ -1,0 +1,68 @@
+{% extends "core/base.html" %}
+
+{% block title %}
+Enen
+{% endblock%}
+
+{% block bodytag %}
+
+{% load static %}
+
+<body background="{% static 'core/images/back.png' %}" style="background-size: auto auto;">
+
+    {% endblock %}
+
+    {% block body %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            {% endfor %}
+    </ul>
+    {% endif %}
+    <br>
+
+    <h1 style="text-align:center;color:black;" class="display-4">
+        Profile
+    </h1>
+
+    <li class="dropdown-divider" style="margin-left:25%;margin-right:25%;color:yellow;border-color:black"></li>
+
+    <br>
+    <br>
+    <div class="row container" style="margin: 0 auto;">
+        <div class="col-md-8 col-sm-12 mb-3">
+            <div class="card" style="background:rgba(0,0,0,1.0);color:white;padding-bottom:17%">
+                <div class="card-body">
+
+                    <h3 class="card-title"> {{ user.name }}</h3>
+                    <li class="dropdown-divider"></li>
+                    <p class="card-text">
+                    <pre
+                        style="color:white">Address : {{ user.address }}<br>Contact Number : {{ user.contactNumber }}<br>Email : {{ user.email }}</pre>
+                    </p>
+                    {% if user.specialization %}
+                    <h2 class="card-link lead" style="color:yellow;margin-bottom:0;">Specialization : {{
+                        user.specialization }}
+                    </h2>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12 mb-3" style="background:rgba(0,0,0,1.0)">
+            <div class="container" style="padding:5%">
+                <img style="display: block; max-width: 100%; height: auto;" src="{{ user.image.url }}"
+                    class="rounded mx-auto d-block img-fluid" alt="Responsive image">
+                <form action="{% url 'update_profile_picture' %}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="image">
+                    <button type="submit">Update Picture</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <li class="dropdown-divider" style="margin-left:25%;margin-right:25%;margin-top:1.5%;margin-bottom:0px"></li>
+    <br>
+
+    {% endblock %}
