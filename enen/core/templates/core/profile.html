@@ -54,23 +54,23 @@ Enen
                 </div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-12 mb-3" style="background:rgba(0,0,0,1.0)">
-            <div class="container" style="padding:5%">
-                <img style="display: block; max-width: 100%; height: auto;" src="{{ user.image.url }}"
-                    class="rounded mx-auto d-block img-fluid" alt="Responsive image">
-                <div style="display: flex;">
+        <div class="col-md-4 col-sm-12 mb-3 text-white" style="background-color: black; border-radius: 10px;">
+            <div class="container p-3">
+                <img src="{{ user.image.url }}" class="rounded mx-auto d-block img-fluid" alt="Responsive image">
+                <div class="d-flex" style="margin-top: 5px;">
                     <form action="{% url 'update_profile_picture' %}" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <input type="file" name="image">
-                        <button type="submit">Update Picture</button>
+                        <input type="file" name="image" class="form-control">
+                        <button type="submit" class="btn btn-primary mt-2">Update Picture</button>
                     </form>
-                    <form action="{% url 'delete_profile_picture' %}" method="post">
+                    <form action="{% url 'delete_profile_picture' %}" method="post" class="ms-2">
                         {% csrf_token %}
-                        <button type="submit">Delete Picture</button>
+                        <button type="submit" class="btn btn-danger mt-2" style="margin-left: 5px;">Delete Picture</button>
                     </form>
                 </div>
             </div>
         </div>
+
     </div>
     <li class="dropdown-divider" style="margin-left:25%;margin-right:25%;margin-top:1.5%;margin-bottom:0px"></li>
     <br>
