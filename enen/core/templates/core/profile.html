@@ -63,6 +63,10 @@ Enen
                     <input type="file" name="image">
                     <button type="submit">Update Picture</button>
                 </form>
+                <form action="{% url 'delete_profile_picture' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Delete Picture</button>
+                </form>
             </div>
         </div>
 

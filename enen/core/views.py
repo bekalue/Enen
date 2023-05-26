@@ -574,7 +574,31 @@ def update_profile_picture(request):
     else:
         return redirect('profile')
 
-
+def delete_profile_picture(request):
+    if request.method == 'POST':
+        if request.session['isDoctor']:
+            user = Doctor.objects.get(emailHash=request.session['userEmail'])
+        else:
+            user = Patient.objects.get(emailHash=request.session['userEmail'])
+        
+        # Check if the user's profile picture is the default picture
+        if user.image.name == '/media/profile_images/default.jpg':
+            context = {
+                'user': user,
+                'message': 'You have not uploaded any profile picture yet!'
+                }
+            return render(request, 'core/profile.html', context)
+        else:
+            user.image.delete(save=False)
+            user.image = 'profile_images/default.jpg'
+            user.save()
+            context = {
+                'user': user,
+                'message': 'Profile picture deleted successfully!'
+                }
+            return render(request, 'core/profile.html', context)
+    else:
+        return redirect('profile')
 
 
 class DoctorViewSet(viewsets.ModelViewSet):

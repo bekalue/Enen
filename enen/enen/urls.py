@@ -39,6 +39,7 @@ urlpatterns = [
     path('requests', views.requests, name = "requests"),
     path('profile', views.profile, name = "profile"),
     path('update_profile_picture/', views.update_profile_picture, name='update_profile_picture'),
+    path('delete_profile_picture/', views.delete_profile_picture, name='delete_profile_picture'),
     path('about', views.about, name = "about"),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
