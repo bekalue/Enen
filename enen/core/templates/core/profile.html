@@ -54,22 +54,23 @@ Enen
                 </div>
             </div>
         </div>
-        <div class="col-md-4 col-sm-12 mb-3 text-white" style="background-color: black; border-radius: 10px;">
+        <div class="col-md-4 col-sm-12 mb-3 text-white rounded" style="background-color: black;">
             <div class="container p-3">
                 <img src="{{ user.image.url }}" class="rounded mx-auto d-block img-fluid" alt="Responsive image">
-                <div class="d-flex" style="margin-top: 5px;">
-                    <form action="{% url 'update_profile_picture' %}" method="post" enctype="multipart/form-data">
+                <form action="{% url 'update_profile_picture' %}" method="post" enctype="multipart/form-data" class="mt-2">
+                    {% csrf_token %}
+                    <input type="file" name="image" class="form-control">
+                </form>
+                <div class="d-flex mt-2 align-items-center">
+                    <button type="submit" class="btn btn-primary rounded">Update Picture</button>
+                    <form action="{% url 'delete_profile_picture' %}" method="post" class="d-inline ms-3">
                         {% csrf_token %}
-                        <input type="file" name="image" class="form-control">
-                        <button type="submit" class="btn btn-primary mt-2">Update Picture</button>
-                    </form>
-                    <form action="{% url 'delete_profile_picture' %}" method="post" class="ms-2">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger mt-2" style="margin-left: 5px;">Delete Picture</button>
+                        <button type="submit" class="btn btn-danger rounded" style="margin-left: 80px;">Delete Picture</button>
                     </form>
                 </div>
             </div>
         </div>
+
 
     </div>
     <li class="dropdown-divider" style="margin-left:25%;margin-right:25%;margin-top:1.5%;margin-bottom:0px"></li>
