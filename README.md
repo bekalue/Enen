@@ -46,7 +46,7 @@ __Website Link__: [Enen](http://enen.bekalue.tech/)
 git clone https://github.com/bekalue/Enen.git
 cd Enen
 .\env\bin\Activate.ps1                        (To activate virtual environment)
-pip install -r requirements.txt
+pip install -r requirements.txt               (To Install all The dependencies)
 cd enen
 py manage.py runserver
 ```
