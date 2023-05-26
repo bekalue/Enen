@@ -580,9 +580,9 @@ def delete_profile_picture(request):
             user = Doctor.objects.get(emailHash=request.session['userEmail'])
         else:
             user = Patient.objects.get(emailHash=request.session['userEmail'])
-        
+
         # Check if the user's profile picture is the default picture
-        if user.image.name == '/media/profile_images/default.jpg':
+        if user.image.name == 'profile_images/default.jpg':
             context = {
                 'user': user,
                 'message': 'You have not uploaded any profile picture yet!'

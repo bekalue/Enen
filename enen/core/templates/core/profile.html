@@ -58,18 +58,19 @@ Enen
             <div class="container" style="padding:5%">
                 <img style="display: block; max-width: 100%; height: auto;" src="{{ user.image.url }}"
                     class="rounded mx-auto d-block img-fluid" alt="Responsive image">
-                <form action="{% url 'update_profile_picture' %}" method="post" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <input type="file" name="image">
-                    <button type="submit">Update Picture</button>
-                </form>
-                <form action="{% url 'delete_profile_picture' %}" method="post">
-                    {% csrf_token %}
-                    <button type="submit">Delete Picture</button>
-                </form>
+                <div style="display: flex;">
+                    <form action="{% url 'update_profile_picture' %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="file" name="image">
+                        <button type="submit">Update Picture</button>
+                    </form>
+                    <form action="{% url 'delete_profile_picture' %}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Delete Picture</button>
+                    </form>
+                </div>
             </div>
         </div>
-
     </div>
     <li class="dropdown-divider" style="margin-left:25%;margin-right:25%;margin-top:1.5%;margin-bottom:0px"></li>
     <br>
