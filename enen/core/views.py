@@ -548,7 +548,10 @@ def profile(request):
             
 
 def update_profile_picture(request):
+    """Function to update profile picture."""
+
     if request.method == 'POST':
+
         if request.session['isDoctor']:
             user = Doctor.objects.get(emailHash=request.session['userEmail'])
         else:
@@ -557,12 +560,20 @@ def update_profile_picture(request):
         if image:
             user.image = image
             user.save()
-            messages.success(request, 'Profile picture updated successfully!')
+            context = {
+                'message': 'Profile picture updated successfully!',
+                'user': user
+                }
+            return render(request, 'core/profile.html', context)
         else:
-            messages.error(request, 'Please select an image to upload.')
-        return redirect('profile')
+            context = {
+                'user': user,
+                'message': 'Please select an image to upload.'
+                }
+            return render(request, 'core/profile.html', context)
     else:
         return redirect('profile')
+
 
 
 
