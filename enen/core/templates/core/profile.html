@@ -60,15 +60,15 @@ Enen
                 <form action="{% url 'update_profile_picture' %}" method="post" enctype="multipart/form-data" class="mt-2">
                     {% csrf_token %}
                     <input type="file" name="image" class="form-control">
+                    <div class="d-flex mt-2 align-items-center">
+                        <button type="submit" class="btn btn-primary rounded">Update Picture</button>
                 </form>
-                <div class="d-flex mt-2 align-items-center">
-                    <button type="submit" class="btn btn-primary rounded">Update Picture</button>
-                    <form action="{% url 'delete_profile_picture' %}" method="post" class="d-inline ms-3">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger rounded" style="margin-left: 80px;">Delete Picture</button>
-                    </form>
-                </div>
+                <form action="{% url 'delete_profile_picture' %}" method="post" class="d-inline ms-3">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger rounded" style="margin-left: 80px;">Delete Picture</button>
+                </form>
             </div>
+        </div>
         </div>
 
 
