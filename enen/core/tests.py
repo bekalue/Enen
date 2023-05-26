@@ -451,7 +451,7 @@ class ClientsInteractionTestCase(TestCase):
 
         # Completing the Assistance in setUp() for checking patient history
         Assistance1 = Assistance.objects.get(patient = Patient.objects.get(email = "12345@gmail.com"))
-        Assistance1.assistanceText = "XYZ Advice..Precription Complete"
+        Assistance1.assistanceText = "XYZ Advice.. Complete"
         Assistance1.isCompleted = True
         Assistance1.save()
 
@@ -477,7 +477,7 @@ class ClientsInteractionTestCase(TestCase):
 
         # Completing the Assistance in setUp() for checking patient history
         assistance1 = Assistance.objects.get(patient = Patient.objects.get(email = "12345@gmail.com"))
-        assistance1.assistanceText = "XYZ Advice..Precription Complete"
+        assistance1.assistanceText = "XYZ Advice.. Complete"
         assistance1.isCompleted = True
         assistance1.save()
 

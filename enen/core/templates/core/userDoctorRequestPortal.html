@@ -37,52 +37,42 @@ Enen
     <form action="{% url 'onlinehelp' %}" method="post">
         {% csrf_token %}
         <div class="card text-center" style="margin-left:5%;margin-right:5%;">
-
             <div class="card-header">Help Request</div>
-
             <div class="card-body">
-
                 <h1 class="card-title">
                     {{ Assistance.patient.name }}
                 </h1>
 
+                <li class=" dropdown-divider" style="margin-left:25%;margin-right:25%"></li>
+                
+                <a href="#" class="btn btn-primary" style="margin-top:1%">Contact Number : {{ Assistance.patient.contactNumber }}</a>
+                <a href="#" class="btn btn-primary" style="margin-top:1%">Email : {{ Assistance.patient.email }}</a>
+                <a href="#" class="btn btn-primary" style="margin-top:1%">Address : {{ Assistance.patient.address }}</a>
+
                 <div class="card-text lead">
-
                     <br>
-
-		    <span>
+                    <span>
                         <h3>Case/Symptoms</h3>
+                        <li class=" dropdown-divider" style="margin-left:25%;margin-right:25%"></li>
                     </span>
-
                     {{ Assistance.symptoms }}
-
+                    <li class=" dropdown-divider" style="margin-left:25%;margin-right:25%"></li>
+                    <br>
+                    <br>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Please type the Response.</label>
-                        <textarea name="Assistance" style="text-align:center" class="form-control"
-                            id="exampleFormControlTextarea1" rows="3" placeholder="Your Response"></textarea>
+                        <textarea name="Assistance" style="text-align:center" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Your Response"></textarea>
                         <input type="hidden" name="AssistanceID" value="{{ Assistance.id }}">
                     </div>
-
                     <br>
-                    <br>
-
                 </div>
-
-                <li class="dropdown-divider" style="margin-left:25%;margin-right:25%"></li>
 
                 <div class="form-group form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1"><span
-                            class="badge badge-success">CONFIRM</span></label>
+                    <label class="form-check-label" for="exampleCheck1"><span class="badge badge-success">CONFIRM</span></label>
                 </div>
 
                 <button type="submit" class="btn btn-warning" style="margin-left:10%;margin-right:10%"">Submit</button><br>
-
-                        <li class=" dropdown-divider" style="margin-left:25%;margin-right:25%"></li>
-
-                    <a href="#" class="btn btn-primary" style="margin-top:1%">Contact Number : {{ Assistance.patient.contactNumber }}</a>
-                    <a href="#" class="btn btn-primary" style="margin-top:1%">Email : {{ Assistance.patient.email }}</a>
-                    <a href="#" class="btn btn-primary" style="margin-top:1%">Address : {{ Assistance.patient.address }}</a>
 
             </div>
 
@@ -90,11 +80,8 @@ Enen
                 {{ Assistance.timestamp }}
             </div>
         </div>
-
     </form>
-
     <br>
-
     {% else %}
     <div class="card text-center" style="margin-left:5%;margin-right:5%;">
 
@@ -103,26 +90,31 @@ Enen
         </div>
 
         <div class="card-body">
-            <h1 class="card-title"> {{ Assistance.patient.name }} </h1> <span>
-                    <h3>Case/Symptoms</h3>
-                </span> {{ Assistance.symptoms }}</p>
-            <p class="card-text lead" style=""><br>{{ Assistance.assistanceText }}<br><br>
+            <h1 class="card-title"> {{ Assistance.patient.name }} </h1>
+            <li class=" dropdown-divider" style="margin-left:25%;margin-right:25%"></li>
             <a href="#" class="btn btn-primary" style="margin-top:1%">Contact Number : {{ Assistance.patient.contactNumber }}</a>
             <a href="#" class="btn btn-primary" style="margin-top:1%">Email : {{ Assistance.patient.email }}</a>
             <a href="#" class="btn btn-primary" style="margin-top:1%">Address : {{ Assistance.patient.address }}</a>
+            <br>
+            <br>
+            <span>
+                <h3>Case/Symptoms</h3>
+                <li class=" dropdown-divider" style="margin-left:25%;margin-right:25%"></li>
+            </span> {{ Assistance.symptoms }}</p>
+            <br>
+            <h3>Your Response</h3>
+            <li class=" dropdown-divider" style="margin-left:25%;margin-right:25%"></li>
+            <p class="card-text lead" style="">{{ Assistance.assistanceText }}<br><br>
+            </div>
+
+            <div class="card-footer text-muted">
+                {{ Assistance.timestamp }}
+            </div>
         </div>
-
-        <div class="card-footer text-muted">
-            {{ Assistance.timestamp }}
-        </div>
-
-    </div>
-
     <br>
     {% endif %}
 
     {% empty %}
-
     <h1 style="text-align:center;color:white">
         You have no Requests right now.
     </h1>

@@ -1,7 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import Doctor, Patient, Assistance, passwordHasher, emailHasher
 from django.db.models import Count, Q
@@ -339,7 +337,6 @@ def logout(request):
 def contact(request):
     """Function to display contact information."""
 
-    # Editing response headers so as to ignore cached versions of pages
     context = {
         "doctors" : Doctor.objects.all(),
         "message":"Please Login First."
@@ -557,14 +554,28 @@ def update_profile_picture(request):
         else:
             user = Patient.objects.get(emailHash=request.session['userEmail'])
         image = request.FILES.get('image')
+
         if image:
-            user.image = image
-            user.save()
-            context = {
-                'message': 'Profile picture updated successfully!',
-                'user': user
-                }
-            return render(request, 'core/profile.html', context)
+
+            # Delete old profile picture if it is not the default picture
+            if user.image and user.image.url != '/media/profile_images/default.jpg':
+                user.image.delete()
+                user.image = image
+                user.save()
+                context = {
+                    'message': 'Profile picture updated successfully!',
+                    'user': user
+                    }
+                return render(request, 'core/profile.html', context)
+            else:
+                # If the user's profile picture is the default picture, just update it
+                user.image = image
+                user.save()
+                context = {
+                    'message': 'Profile picture updated successfully!',
+                    'user': user
+                    }
+                return render(request, 'core/profile.html', context)
         else:
             context = {
                 'user': user,
@@ -575,6 +586,8 @@ def update_profile_picture(request):
         return redirect('profile')
 
 def delete_profile_picture(request):
+    """Function to delete profile picture."""
+
     if request.method == 'POST':
         if request.session['isDoctor']:
             user = Doctor.objects.get(emailHash=request.session['userEmail'])

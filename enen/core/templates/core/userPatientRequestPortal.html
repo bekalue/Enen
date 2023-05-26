@@ -35,12 +35,20 @@ Enen
 
         <div class="card-body">
             <h1 class="card-title"> Dr. {{ Assistance.doctor.name }} </h1>
-            <p class="card-text lead" style=""><br>{{ Assistance.assistanceText }}<br><br> <span>
-                    <h3>Your Case/Symptoms</h3>
-                </span> {{ Assistance.symptoms }}</p>
+
+            <li class=" dropdown-divider" style="margin-left:25%;margin-right:25%"></li>
+
             <a href="#" class="btn btn-primary" style="margin-top:1%">Contact Number : {{ Assistance.doctor.contactNumber }}</a>
             <a href="#" class="btn btn-primary" style="margin-top:1%">Email : {{ Assistance.doctor.email }}</a>
             <a href="#" class="btn btn-primary" style="margin-top:1%">Address : {{ Assistance.doctor.address }}</a>
+            <br>
+            <br>
+            <h3>The Response</h3>
+            <li class=" dropdown-divider" style="margin-left:25%;margin-right:25%"></li>
+            <p class="card-text lead" style="">{{ Assistance.assistanceText }}<br><br> <span>
+                    <h3>Your Case/Symptoms</h3>
+                    <li class=" dropdown-divider" style="margin-left:25%;margin-right:25%"></li>
+                </span> {{ Assistance.symptoms }}</p>
         </div>
 
         <div class="card-footer text-muted">
