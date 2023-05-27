@@ -638,3 +638,10 @@ class AssistanceViewSet(viewsets.ModelViewSet):
     queryset = Assistance.objects.all()
     # Serializing the data
     serializer_class = AssistanceSerializer
+
+def page_not_found(request, exception):
+    """Function to display 404 error page."""
+
+    # Editing response headers so as to ignore cached versions of pages
+    response = render(request, "core/404.html")
+    return responseHeadersModifier(response)
