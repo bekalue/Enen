@@ -60,8 +60,19 @@ def register(request):
         userPassword = request.POST["userPassword"]
         userConfirmPassword = request.POST["userConfirmPassword"]
 
+        # Check if a user with the same email or user ID already exists
+        if Patient.objects.filter(email=userEmail).exists() or Patient.objects.filter(userId=userId).exists():
+            # Storing failure message in the context variable
+            context = {
+                "message": "A user with this email or user ID already exists. Please try again with different information."
+            }
+
+            # Editing response headers so as to ignore cached versions of pages
+            response = render(request, "core/register.html", context)
+            return responseHeadersModifier(response)
+
         # If both the passwords match
-        if userPassword == userConfirmPassword:
+        elif userPassword == userConfirmPassword:
 
             name = userFirstName + " " + userLastName
 

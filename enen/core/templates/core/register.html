@@ -19,7 +19,14 @@ Enen
 
 
 {% block body %}
+<br>
 
+{% if message %}
+<div style="text-align:center;margin:0 auto;" class="alert alert-warning" role="alert">
+    {{ message }}
+</div>
+{% endif %}
+<br>
 
     <div class="jumbotron jumbotron-fluid"
         style="margin:5%;padding:5%;background:rgba(0,0,0,0.8);padding-top:2%;padding-bottom:2%" align="center"
@@ -111,11 +118,5 @@ Enen
     {% endif %}
 
     <br>
-
-    {% if message %}
-    <div style="text-align:center;margin:0 auto;" class="alert alert-warning" role="alert">
-        {{ message }}
-    </div>
-    {% endif %}
 
     {% endblock %}
