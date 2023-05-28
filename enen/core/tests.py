@@ -351,7 +351,7 @@ class ClientsInteractionTestCase(TestCase):
         self.assertIn("Registration Successful", response.context["message"])
 
         # Requesting by POST method for page with incorrect input(passwords not matching)
-        response = client.post("/register", {"userFirstName" : "AA", "userLastName" : "BB", "userEmail" : "abcd@gmail.com", "userId" : "B99CS099", "userAddress" : "CC, DD", "userContactNo" : "9999999999", "userPassword" : "12345", "userConfirmPassword" : "123456"})
+        response = client.post("/register", {"userFirstName" : "AA", "userLastName" : "BB", "userEmail" : "abcde@gmail.com", "userId" : "c99CS099", "userAddress" : "CC, DD", "userContactNo" : "9999999999", "userPassword" : "12346", "userConfirmPassword" : "123456"})
         # Asserting correct status code, response headers and templates
         self.assertEqual(response.status_code, 200)
         self.assertTrue(checkResponseHeaders(response))
