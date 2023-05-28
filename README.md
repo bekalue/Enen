@@ -62,6 +62,7 @@ source ./env/bin/activate                        (To activate virtual environmen
 cd enen
 pip install django
 pip install pycrypto
+pip install -r requirements.txt
 python3 manage.py runserver
 ```
 To deactivate the virtual environment on Ubuntu, simply type:
