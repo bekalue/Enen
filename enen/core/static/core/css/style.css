@@ -103,3 +103,13 @@ body {
         max-width: 1170px;
     }
 }
+.patient-image,
+.doctor-image
+ {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
