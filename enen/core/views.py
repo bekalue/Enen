@@ -216,7 +216,7 @@ def login(request):
 
                 # Storing message inside context variable
                 context = {
-                    "message":"User does not exist.Please register first."
+                    "message":"User does not exist. Please register first."
                 }
 
                 # Editing response headers so as to ignore cached versions of pages
@@ -252,7 +252,7 @@ def login(request):
                 response = HttpResponseRedirect(reverse('index'))
                 return responseHeadersModifier(response)
 
-            # Else if the password inputted is worng and doesn't match
+            # Else if the password inputted is wrong and doesn't match
             else:
 
                 # Storing message inside context variable
@@ -357,19 +357,7 @@ def onlinehelp(request):
         if request.session['isLoggedIn']:
 
             # Portal only for patient Assistance request submission, not for doctors
-            if request.session['isDoctor']:
-
-                # Storing message inside context variable
-                context = {
-                        "message":"Only for patients."
-                }
-
-                # Editing response headers so as to ignore cached versions of pages
-                response = render(request, "core/help.html", context)
-                return responseHeadersModifier(response)
-
-            # If the user is a patient
-            else:
+            if not request.session['isDoctor']:
 
                 # Storing available doctors inside context variable
                 context = {
@@ -489,7 +477,7 @@ def requests(request):
 
 
 def about(request):
-    """Function to display about information."""
+    """Function to display about bekalu's information."""
 
     # Editing response headers so as to ignore cached versions of pages
     response = render(request, "core/me.html")
