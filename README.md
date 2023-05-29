@@ -70,7 +70,7 @@ To deactivate the virtual environment on Ubuntu, simply type:
 deactivate
 ```
 
-## Architecture
+## Architecture 📐✏️
 
 ### Data Model
 
