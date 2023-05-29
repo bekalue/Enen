@@ -71,7 +71,18 @@ deactivate
 ```
 
 ## Architecture
+
 ### Data Model
+
+The project data model defines three classes: `Doctor`, `Patient`, and `Assistance`, which represent doctors, patients, and assistance records, respectively. These classes are subclasses of Django's `Model` class and define the structure of the database tables that will store information about doctors, patients, and assistance records.
+
+The `Doctor` class has several fields that store information about a doctor, including their name, address, contact number, email address, specialization, password hash, email hash, and profile image. 
+
+The `Patient` class has similar fields to the `Doctor` class but also includes a `userId` field that stores a unique identifier for each patient or a registered user.
+
+The `Assistance` class represents an assistance record and has fields for storing the assistance text, the doctor and patient associated with the record (represented as foreign keys), the timestamp of when the record was created, whether the record is new or not (represented as a boolean), whether the record is completed or not (represented as a boolean), and the symptoms or case associated with the record.
+
+These classes define the structure of the database tables that will store information about doctors, patients, and assistance records in a Django application.
 
 <p align="center">
   <img src="assets/data_model.png" width="900" title="data model">
