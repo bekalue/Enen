@@ -87,3 +87,5 @@ These classes define the structure of the database tables that will store inform
 <p align="center">
   <img src="assets/data_model.png" width="900" title="data model">
 </p>
+
+## Acknowledgement🫂
