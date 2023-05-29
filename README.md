@@ -69,3 +69,10 @@ To deactivate the virtual environment on Ubuntu, simply type:
 ```powershell
 deactivate
 ```
+
+## Architecture
+### Data Model
+
+<p align="center">
+  <img src="assets/data_model.png" width="900" title="data model">
+</p>
