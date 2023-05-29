@@ -82,7 +82,7 @@ The `Patient` class has similar fields to the `Doctor` class but also includes a
 
 The `Assistance` class represents an assistance record and has fields for storing the assistance text, the doctor and patient associated with the record (represented as foreign keys), the timestamp of when the record was created, whether the record is new or not (represented as a boolean), whether the record is completed or not (represented as a boolean), and the symptoms or case associated with the record.
 
-These classes define the structure of the database tables that will store information about doctors, patients, and assistance records in a Django application.
+These classes define the structure of the database tables that will store information about doctors, patients, and assistance records in this a Django application.
 
 <p align="center">
   <img src="assets/data_model.png" width="900" title="data model">
