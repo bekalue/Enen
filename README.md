@@ -72,17 +72,23 @@ deactivate
 
 ## Architecture 📐✏️
 
+This project is built using the Django framework and consists of a database, models, views, templates, and serializers for accessing API JSON models. Data is stored in a SQLite3 database located in the project’s base directory. The web client is built using Django’s template system and communicates with the backend to fetch data and render views. The web client serves as the primary interface for accessing Enen. The image below illustrates the data flow within the project.
+
+<p align="center">
+  <img src="assets/data_flow.png" width="900" title="data flow">
+</p>
+
 ### Data Model
 
-Enen data model defines three classes: `Doctor`, `Patient`, and `Assistance`, which represent doctors, patients(registered users seeking medical attention), and assistance records, respectively. These classes are subclasses of Django's `Model` class and define the structure of the database tables that will store information about doctors, patients, and assistance records.
+The data model for this project defines three classes: `Doctor`, `Patient`, and `Assistance`, which represent doctors, patients (registered users seeking medical attention), and assistance records, respectively. These classes are subclasses of Django’s Model class and define the structure of the database tables used to store information about doctors, patients, and assistance records.
 
-The `Doctor` class has several fields that store information about a doctor, including their name, address, contact number, email address, specialization, password hash, email hash, and profile image. 
+The `Doctor` class has several fields that store information about a doctor, including their name, address, contact number, email address, specialization, password hash, email hash, and profile image.
 
-The `Patient` class has similar fields to the `Doctor` class but also includes a `userId` field that stores a unique identifier for each patient or a registered user.
+The `Patient` class has similar fields to the `Doctor` class but also includes a `userId` field that stores a unique identifier for each patient or registered user.
 
 The `Assistance` class represents an assistance record and has fields for storing the assistance text, the doctor and patient associated with the record (represented as foreign keys), the timestamp of when the record was created, whether the record is new or not (represented as a boolean), whether the record is completed or not (represented as a boolean), and the symptoms or case associated with the record.
 
-These classes define the structure of the database tables that will store information about doctors, patients, and assistance records in this a Django application.
+These classes define the structure of the database tables used to store information about doctors, patients, and assistance records in this Django application.
 
 <p align="center">
   <img src="assets/data_model.png" width="900" title="data model">
