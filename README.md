@@ -96,7 +96,7 @@ These classes define the structure of the database tables used to store informat
 
 ## Acknowledgement🫂
 
-I would like to express my sincere gratitude to the mentors at the **[ALX Software Engineering Program](https://www.alxafrica.com/software-engineering/)** for their guidance and support throughout the development of this project. Their expertise and insights have been invaluable in helping me overcome challenges and achieve my goals.
+I would like to express my sincere gratitude to the mentors at the **[ALX Software Engineering Program](https://www.alxafrica.com/software-engineering/)** for their guidance and support throughout the program and development of this project. Their expertise and insights have been invaluable in helping me overcome challenges and achieve my goals.
 
 I would also like to thank my fellow students in cohort 9 for their camaraderie and collaboration. Their feedback and encouragement have been instrumental in helping me grow and improve as a developer.
 
@@ -104,4 +104,4 @@ In addition, I would like to thank the online community for their willingness to
 
 Finally, I would like to thank you, the reader, for taking the time to learn about this project. Your interest and feedback are greatly appreciated.
 
-Thank you all for your support and encouragement!
+Thank you all for your support and encouragement! 🙏🏽🤗
