@@ -74,7 +74,7 @@ deactivate
 
 ### Data Model
 
-The project data model defines three classes: `Doctor`, `Patient`, and `Assistance`, which represent doctors, patients, and assistance records, respectively. These classes are subclasses of Django's `Model` class and define the structure of the database tables that will store information about doctors, patients, and assistance records.
+Enen data model defines three classes: `Doctor`, `Patient`, and `Assistance`, which represent doctors, patients, and assistance records, respectively. These classes are subclasses of Django's `Model` class and define the structure of the database tables that will store information about doctors, patients, and assistance records.
 
 The `Doctor` class has several fields that store information about a doctor, including their name, address, contact number, email address, specialization, password hash, email hash, and profile image. 
 
