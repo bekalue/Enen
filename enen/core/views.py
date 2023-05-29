@@ -110,7 +110,7 @@ def register(request):
     else:
 
         # Editing response headers so as to ignore cached versions of pages
-        response = render(request,"core/register.html.html")
+        response = render(request,"core/register.html")
         return responseHeadersModifier(response)
 
 def doctors(request):
