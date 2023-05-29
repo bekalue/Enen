@@ -311,21 +311,6 @@ class ClientsInteractionTestCase(TestCase):
         self.assertTrue(checkResponseHeaders(response))
         self.assertTemplateUsed(response, 'core/doctors.html', 'core/base.html')
 
-    def testValidDoctorsPage(self):
-        """Function for testing the doctors page."""
-        client = Client()
-
-        # Requesting by GET method for page
-        response = client.get("/doctors")
-
-        # Asserting correct status code, response headers and templates
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue(checkResponseHeaders(response))
-        self.assertTemplateUsed(response, 'core/doctors.html', 'core/base.html')
-
-        # Asserting correct count of doctors
-        self.assertEqual(response.context["doctors"].count(), 2)
-
     def testGetRegisterPage(self):
         """Function for testing the register page by GET method."""
         client = Client()

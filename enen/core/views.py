@@ -113,23 +113,6 @@ def register(request):
         response = render(request,"core/register.html")
         return responseHeadersModifier(response)
 
-def doctors(request):
-    """Function to send information about the doctors available to the user. """
-
-    # Storing doctors available in the context variable
-    context = {
-        "doctors" : Doctor.objects.all(),
-        "message":"Please Login First."
-    }
-    if request.session.get('isLoggedIn', False):
-        # Editing response headers so as to ignore cached versions of pages
-        response = render(request,"core/doctors.html",context)
-        return responseHeadersModifier(response)
-    else:
-        # Editing response headers so as to ignore cached versions of pages
-        response = render(request, "core/doctors.html", context)
-        return responseHeadersModifier(response)
-
 def login(request):
     """ Function for logging in the user. """
 
