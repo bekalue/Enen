@@ -102,16 +102,15 @@ deactivate
 
 ## Related Projects
 
-+ j
-+ k
++ [HBNB](https://github.com/bekalue/AirBnB_clone_v4)
 
 ## Contributing
 
-We welcome contributions to enen! Please see our [contribution file](CONTRIBUTING.md) for more information on how to get started.
+I welcome contributions to enen! Please see my [contribution file](CONTRIBUTING.md) for more information on how to get started.
 
 ## Code of Conduct
 
-We are committed to providing a welcoming and inclusive environment for all contributors. Please see our [code of conduct](CODE_OF_CONDUCT.md) for more information.
+I am committed to providing a welcoming and inclusive environment for all contributors. Please see my [code of conduct](CODE_OF_CONDUCT.md) for more information.
 
 ## Acknowledgement🫂
 
