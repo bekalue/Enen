@@ -6,6 +6,9 @@
 ![py](https://img.shields.io/badge/Python-3.11.3-yellowgreen)
 ![stat](https://img.shields.io/badge/status-up-green)
 
+## Introduction 🤔
+__Enen__ is a simple web application that connects people with immediate virtual care for non-life-threatening illnesses and injuries. This app helps people avoid in-person doctor’s or clinic visits for minor health issues and questions that can easily be addressed via a one time Message or Phone calls. It connects users with remote physicians and doctors, providing convenient and accessible healthcare from the comfort of their own homes.
+
 > Do you want to know why i named my project `Enen`?🤷🏽‍♂️ Well....
 
 > The word `Enen` is a common and versatile expression in Amharic Language that is used to convey comfort, sympathy, or empathy. It is often used when someone is experiencing physical or emotional pain, and can be used to show that the speaker cares and wants to offer support.
@@ -17,9 +20,6 @@
 <p align="center">
   <img src="assets/site.png" width="900" title="Home Page">
 </p>
-
-## About The Project 🤔
-__Enen__ is a simple web application that connects people with immediate virtual care for non-life-threatening illnesses and injuries. This app helps people avoid in-person doctor’s or clinic visits for minor health issues and questions that can easily be addressed via a one time Message or Phone calls. It connects users with remote physicians and doctors, providing convenient and accessible healthcare from the comfort of their own homes..
 
 ## Live Site 🕸️
 __Website Link__: [Enen](http://enen.bekalue.tech/)
@@ -41,6 +41,30 @@ __You like it right ?!__ 😆 now connect with me on **[Linkedin](https://www.li
 - HTML/CSS/Javascript
 - Bootstrap
 - SQLite
+
+## Architecture 📐✏️
+
+This project is built using the Django framework and consists of a database, models, views, templates, and serializers for accessing API JSON models. Data is stored in a SQLite3 database located in the project’s base directory. The web client is built using Django’s template system and communicates with the backend to fetch data and render views. The web client serves as the primary interface for accessing Enen. The image below illustrates the data flow within the project.
+
+<p align="center">
+  <img src="assets/data_flow.png" width="900" title="data flow">
+</p>
+
+### Data Model
+
+The data model for this project defines three classes: `Doctor`, `Patient`, and `Assistance`, which represent doctors, patients (registered users seeking medical attention), and assistance records, respectively. These classes are subclasses of Django’s Model class and define the structure of the database tables used to store information about doctors, patients, and assistance records.
+
+The `Doctor` class has several fields that store information about a doctor, including their name, address, contact number, email address, specialization, password hash, email hash, and profile image.
+
+The `Patient` class has similar fields to the `Doctor` class but also includes a `userId` field that stores a unique identifier for each patient or registered user.
+
+The `Assistance` class represents an assistance record and has fields for storing the assistance text, the doctor and patient associated with the record (represented as foreign keys), the timestamp of when the record was created, whether the record is new or not (represented as a boolean), whether the record is completed or not (represented as a boolean), and the symptoms or case associated with the record.
+
+These classes define the structure of the database tables used to store information about doctors, patients, and assistance records in this Django application.
+
+<p align="center">
+  <img src="assets/data_model.png" width="900" title="data model">
+</p>
 
 ## Getting Started 💁🏽
 ### Windows Powershell
@@ -72,34 +96,6 @@ To deactivate the virtual environment on Ubuntu, simply type:
 deactivate
 ```
 
-## Architecture 📐✏️
-
-This project is built using the Django framework and consists of a database, models, views, templates, and serializers for accessing API JSON models. Data is stored in a SQLite3 database located in the project’s base directory. The web client is built using Django’s template system and communicates with the backend to fetch data and render views. The web client serves as the primary interface for accessing Enen. The image below illustrates the data flow within the project.
-
-<p align="center">
-  <img src="assets/data_flow.png" width="900" title="data flow">
-</p>
-
-### Data Model
-
-The data model for this project defines three classes: `Doctor`, `Patient`, and `Assistance`, which represent doctors, patients (registered users seeking medical attention), and assistance records, respectively. These classes are subclasses of Django’s Model class and define the structure of the database tables used to store information about doctors, patients, and assistance records.
-
-The `Doctor` class has several fields that store information about a doctor, including their name, address, contact number, email address, specialization, password hash, email hash, and profile image.
-
-The `Patient` class has similar fields to the `Doctor` class but also includes a `userId` field that stores a unique identifier for each patient or registered user.
-
-The `Assistance` class represents an assistance record and has fields for storing the assistance text, the doctor and patient associated with the record (represented as foreign keys), the timestamp of when the record was created, whether the record is new or not (represented as a boolean), whether the record is completed or not (represented as a boolean), and the symptoms or case associated with the record.
-
-These classes define the structure of the database tables used to store information about doctors, patients, and assistance records in this Django application.
-
-<p align="center">
-  <img src="assets/data_model.png" width="900" title="data model">
-</p>
-
-## Contributing
-
-We welcome any contributions but please read our [CONTRIBUTING](./CONTRIBUTING.md) guidelines before you make any.
-
 ## Discussion
 
 + Discuss Enen on [GitHub Discussions](https://github.com/bekalue/Enen/discussions)
@@ -109,9 +105,13 @@ We welcome any contributions but please read our [CONTRIBUTING](./CONTRIBUTING.m
 + j
 + k
 
-## Licensing
+## Contributing
 
-Enen is licensed under the [MIT LICENSE](LICENSE).
+We welcome contributions to enen! Please see our [contribution file](CONTRIBUTING.md) for more information on how to get started.
+
+## Code of Conduct
+
+We are committed to providing a welcoming and inclusive environment for all contributors. Please see our [code of conduct](CODE_OF_CONDUCT.md) for more information.
 
 ## Acknowledgement🫂
 
@@ -124,3 +124,7 @@ In addition, I would like to thank the online community for their willingness to
 Finally, I would like to thank you, the reader, for taking the time to learn about this project. Your interest and feedback are greatly appreciated.
 
 Thank you all for your support and encouragement! 🙏🏽🤗
+
+## Licensing
+
+Enen is licensed under the [MIT LICENSE](LICENSE).
