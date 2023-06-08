@@ -17,7 +17,7 @@
 
 ## Code Style
 
-We follow the [Django coding style](https://docs.djangoproject.com/en/3.2/internals/contributing/writing-code/coding-style/) for our project. Please make sure your code adheres to these guidelines before submitting a pull request.
+I follow the [Django coding style](https://docs.djangoproject.com/en/3.2/internals/contributing/writing-code/coding-style/) for our project. Please make sure your code adheres to these guidelines before submitting a pull request.
 
 ## Reporting Issues
 
@@ -25,10 +25,10 @@ If you find a bug or have a suggestion for a new feature, please [open an issue]
 
 ## Future Plans
 
-We have big plans for enen! Some of our future goals include adding more features, improving performance, and expanding our user base.
+I have big plans for enen! Some of my future goals include adding more features, improving performance, and expanding my user base.
 
 ## A Little Humor
 
-Why don't programmers like nature? It has too many bugs!
+Why don't programmers like nature? It has too many bugs!😂
 
-Thank you for helping us make enen better!
+Thank you for helping me make enen better!🔧🤗
