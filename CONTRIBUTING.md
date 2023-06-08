@@ -1,6 +1,6 @@
 # Contributing to enen
 
-🎆🍾Thank you for your interest in contributing to enen! We welcome contributions from anyone, whether you're new to open source or an experienced developer.
+🎆🍾Thank you for your interest in contributing to enen! I welcome contributions from anyone, whether you're new to open source or an experienced developer.
 
 ## Getting Started
 
