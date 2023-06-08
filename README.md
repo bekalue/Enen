@@ -96,6 +96,23 @@ These classes define the structure of the database tables used to store informat
   <img src="assets/data_model.png" width="900" title="data model">
 </p>
 
+## Contributing
+
+We welcome any contributions but please read our [CONTRIBUTING](./CONTRIBUTING.md) guidelines before you make any.
+
+## Discussion
+
++ Discuss Enen on [GitHub Discussions](https://github.com/bekalue/Enen/discussions)
+
+## Related Projects
+
++ j
++ k
+
+## Licensing
+
+Enen is licensed under the [MIT LICENSE](LICENSE).
+
 ## Acknowledgement🫂
 
 I would like to express my sincere gratitude to the mentors at the **[ALX Software Engineering Program](https://www.alxafrica.com/software-engineering/)** for their guidance and support throughout the program and development of this project. Their expertise and insights have been invaluable in helping me overcome challenges and achieve my goals.
