@@ -96,19 +96,19 @@ To deactivate the virtual environment on Ubuntu, simply type:
 deactivate
 ```
 
-## Discussion
+## Discussion 💬
 
 + Discuss Enen on [GitHub Discussions](https://github.com/bekalue/Enen/discussions)
 
-## Related Projects
+## Related Projects ⏭️🚶🏽‍♂️
 
 + [HBNB](https://github.com/bekalue/AirBnB_clone_v4)
 
-## Contributing
+## Contributing 🧑🏽‍💼
 
 I welcome contributions to enen! Please see my [contribution file](CONTRIBUTING.md) for more information on how to get started.
 
-## Code of Conduct
+## Code of Conduct 🧐
 
 I am committed to providing a welcoming and inclusive environment for all contributors. Please see my [code of conduct](CODE_OF_CONDUCT.md) for more information.
 
@@ -124,6 +124,6 @@ Finally, I would like to thank you, the reader, for taking the time to learn abo
 
 Thank you all for your support and encouragement! 🙏🏽🤗
 
-## Licensing
+## Licensing 🪪
 
 Enen is licensed under the [MIT LICENSE](LICENSE).
